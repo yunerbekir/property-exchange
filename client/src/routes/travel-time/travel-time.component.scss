@@ -1,0 +1,31 @@
+.map-view-resizable {
+    position: relative;
+    .react-resizable-handle {
+        display: block;
+        margin-top: 5px;
+        background-color: gray;
+        cursor: w-resize;
+        width: 5px;
+        height: 100%;
+        position: absolute;
+        right: -5px;
+        top: 0;
+        z-index: 2;
+        &:nth-child(3) {
+            display: none;
+        }
+    }
+}
+
+.map-view-row {
+    overflow: hidden;
+    padding-bottom: 20px;
+    display: flex;
+
+    .travel-time-list {
+        padding: 55px 10px 0 15px;
+
+        height: calc(100vh - 84px);
+        overflow: auto;
+    }
+}

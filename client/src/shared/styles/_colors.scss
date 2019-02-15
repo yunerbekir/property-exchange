@@ -1,0 +1,84 @@
+// Main App Colors
+$white: #FFFFFF;
+$dirty-white: #F2F2F2;
+
+$light-gray: #E6E6E6;
+$gray: #CCCCCC;
+$dark-gray: #B3B3B3;
+$darker-grey: #A7A9AC;
+$darkest-gray: #999999;
+$bright-gray: #626366;
+$darkslategray: #444444;
+
+$light: #666666;
+$dark: #4D4D4D;
+$darker: #333333;
+$darkest: #1A1A1A;
+$black: #000000;
+
+$purple: #AC00B1;
+
+$red: #EC6363;
+
+// Theme Colors
+$themes: (
+    day: (
+        bodyBackground: $dark-gray,
+        navBackground: $white,
+        navLinkColor: $darkest-gray,
+        boxShadow: 0 3px 9px $gray,
+
+        loginLogo: url('../../core/assets/images/InTime_logo_login@2x.png'),
+        loginImage: url('../../core/assets/images/intime_background_01.jpg'),
+
+        loginBackgroundColor: $white,
+        loginFormTextColor: $darker-grey,
+        loginFormBorderColor: $bright-gray,
+        loginButtonBackgroundColor: $bright-gray,
+        loginButtonHoverColor: $darker,
+        loginButtonTextColor: $white,
+        loginInfoTextColor: $dark,
+        loginInfoBorderColor: $darker-grey,
+        loginModalBoxShadow: $darkest,
+
+    ),
+    night: (
+        bodyBackground: $black,
+        navBackground: $dark,
+        navLinkColor: $dirty-white,
+        boxShadow: 0 3px 9px $darker,
+
+        loginLogo: url('../../core/assets/images/InTime_logo_login@2x.png'),
+        loginImage: url('../../core/assets/images/intime_background_01.jpg'),
+        loginBackgroundColor: $dark,
+        loginFormTextColor: $darker-grey,
+        loginFormBorderColor: $dark-gray,
+        loginButtonBackgroundColor: $darker-grey,
+        loginButtonHoverColor: $light-gray,
+        loginButtonTextColor: $black,
+        loginInfoTextColor: $light-gray,
+        loginInfoBorderColor: $darker-grey,
+        loginModalBoxShadow: $darkslategray,
+    )
+);
+
+// The mixin iterates over the themes and outputs .theme-#{themeName}
+@mixin themify($themes: $themes) {
+    @each $theme, $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), '#{$key}');
+                $theme-map: map-merge($theme-map, ($key: $value)) !global;
+            }
+
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+// Helper fn in order to access the theme-map easily inside the wrapped content
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}

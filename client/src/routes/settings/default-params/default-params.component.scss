@@ -1,0 +1,46 @@
+.terrain-switcher-dropdown {
+    top: 10px;
+    z-index: 500;
+}
+
+.terrain-switcher-dropdown {
+    right: 110px;
+}
+
+.new-travel-time-map {
+    .get-my-location-btn {
+        left: 890px;
+        top: 40px;
+        z-index: 500;
+    }
+
+    .focus-devices-btn {
+        left: 880px;
+        top: 40px;
+        z-index: 500;
+    }
+}
+
+.map-location-inputs {
+    .ant-input-number {
+        width: 100%;
+    }
+}
+
+.inline-form-items,
+.map-location-inputs {
+    .ant-form-item-label {
+        text-align: left;
+    }
+}
+
+.upload-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    .anticon {
+        vertical-align: middle;
+    }
+}
+

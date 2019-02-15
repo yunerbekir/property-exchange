@@ -1,0 +1,169 @@
+@import "../../../theme";
+
+.travel-time-item {
+    margin-bottom: 5px;
+
+    .ant-collapse-item {
+        border-radius: 5px !important;
+        border: 1px solid $normal-color;
+    }
+
+    &.visible-on-map {
+        box-shadow: 5px 4px 2px $normal-color;
+
+        .travel-time-item-name-container {
+            color: $brand-green;
+        }
+        .ant-collapse-item {
+            border-color: $brand-green;
+        }
+    }
+
+    .ant-alert-info {
+        margin-top: 5px;
+    }
+
+    .data-type-btn {
+        margin-right: 10px;
+        width: 138px;
+    }
+}
+
+.travel-time-table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .actions-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .travel-time-data-actions {
+            margin-left: 10px;
+
+            .travel-time-date-picker {
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.road-column {
+    background: #fafafa;
+    color: rgba(0, 0, 0, .85);
+    font-weight: 500;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.ant-table-row {
+    &:nth-child(even) {
+        .road-column {
+            background: #e2e2e2;
+            filter: contrast(90%);
+            border-right-color: #e2e2e2;
+        }
+
+    }
+    &:nth-child(odd) {
+        .road-column {
+            background: #f9f9f9;
+            filter: contrast(90%);
+            border-right-color: #f9f9f9;
+        }
+    }
+}
+
+.travel-time-item-table {
+    &.huge-table {
+        .ant-table-fixed {
+            width: 200px;
+        }
+    }
+
+    &table,
+    table {
+        table-layout: fixed !important;
+        .travel-time-item-table-cell {
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding: 5px !important;
+            cursor: pointer;
+
+            &.road-column {
+                cursor: initial;
+            }
+        }
+
+        .active-cell {
+            background-color: #999 !important;
+            color: white !important;
+
+            &:hover {
+                background-color: #777 !important;
+                color: white !important;
+            }
+        }
+
+        th {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        .road-column {
+            text-align: left;
+        }
+
+        .table-prefix {
+            float: left;
+            opacity: 0.5;
+        }
+    }
+
+    .react-resizable-handle {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: block;
+        float: left;
+        height: 32px;
+        width: 5px;
+        background-color: gray;
+        cursor: e-resize;
+
+        &:nth-child(3) {
+            display: none;
+        }
+    }
+}
+
+.origin-destination-cell {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    &,
+    div {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.travel-time-item-name-container {
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    .pie-chart-icon {
+        font-size: 16px;
+        margin-right: 5px;
+    }
+}

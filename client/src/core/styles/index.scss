@@ -1,0 +1,126 @@
+@import "reset-global";
+@import "helpers";
+@import "common";
+@import "../../shared/styles/colors";
+@import "../../../node_modules/react-redux-toastr/src/styles/index";
+
+/*** Roboto Font-Face Declarations ***/
+
+// Normal
+@font-face {
+    font-family: 'Roboto-Condensed';
+    font-display: auto;
+    src: url('../assets/robotto-condensed/RobotoCondensed-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+// Italic
+@font-face {
+    font-family: 'Roboto-Condensed';
+    font-display: auto;
+    src: url('../assets/robotto-condensed/RobotoCondensed-Italic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: normal;
+}
+
+// Bold
+@font-face {
+    font-family: 'Roboto-Condensed';
+    font-display: auto;
+    src: url('../assets/robotto-condensed/RobotoCondensed-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: bold;
+}
+
+// BoldItalic
+@font-face {
+    font-family: 'Roboto-Condensed';
+    font-display: auto;
+    src: url('../assets/robotto-condensed/RobotoCondensed-BoldItalic.ttf') format('truetype');
+    font-style: italic;
+    font-weight: bold;
+}
+
+// Light
+@font-face {
+    font-family: 'Roboto-Condensed';
+    font-display: auto;
+    src: url('../assets/robotto-condensed/RobotoCondensed-Light.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 300;
+}
+
+// LightItalic
+@font-face {
+    font-family: 'Roboto-Condensed';
+    font-display: auto;
+    src: url('../assets/robotto-condensed/RobotoCondensed-Light.ttf') format('truetype');
+    font-style: italic;
+    font-weight: 300;
+}
+
+body {
+    @include themify($themes) {
+        background-color: themed('bodyBackground');
+    }
+}
+
+.top-navbar.navbar {
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 0;
+
+    @include themify($themes) {
+        background-color: themed('navBackground');
+    }
+
+    .open > .dropdown-toggle {
+        @include themify($themes) {
+            background-color: themed('navBackground');
+        }
+    }
+
+    .navbar-nav li > a {
+        @include themify($themes) {
+            color: themed('navLinkColor');
+        }
+    }
+
+    .navbar-nav > .dropdown > .dropdown-toggle {
+        @include themify($themes) {
+            color: themed('navLinkColor');
+        }
+    }
+
+    .dropdown-menu {
+        @include themify($themes) {
+            background-color: themed('navBackground');
+        }
+    }
+
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+        background-color: rgba(193, 193, 193, .2);
+    }
+
+    .nav-logo {
+        width: 180px;
+        position: relative;
+        top: -5px;
+    }
+
+    .intersection-name a {
+        font-size: 16px;
+
+        @include themify($themes) {
+            color: themed('intersectionName') !important;
+        }
+    }
+
+    .intersection-icon {
+        font-size: 21px;
+        position: absolute;
+        top: 13px;
+        left: -15px;
+    }
+}

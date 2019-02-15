@@ -1,0 +1,44 @@
+.react-app-body {
+    #main-container-wrapper {
+        display: none;
+    }
+}
+
+.list-group-item a {
+    padding: initial;
+    display: initial;
+}
+
+.ant-table-row {
+    &:nth-child(even) {
+        background-color: #e2e2e2;
+
+    }
+    &:nth-child(odd) {
+        background-color: #f9f9f9;
+    }
+}
+
+.ant-layout-header {
+    background: white !important;
+}
+
+.leaflet-top, .leaflet-bottom {
+    z-index: 999 !important;
+}
+
+.ant-layout-header {
+    z-index: 1000 !important;
+}
+
+.ant-layout-content {
+    padding: 0 !important;
+}
+
+.theme-day .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    padding: 5px 10px;
+}
+
+.ant-calendar-time-picker-select {
+    overflow-y: auto !important;
+}

@@ -1,0 +1,135 @@
+@import '../../shared/styles/colors';
+
+.login-component {
+    min-height: 100vh;
+    @include themify($themes) {
+        background-color: themed('loginBackgroundColor');
+    }
+
+    .login-logo {
+        height: 160px;
+        width: 200px;
+        text-align: center;
+        margin: auto;
+        padding: 40px 0;
+
+        @include themify($themes) {
+            content: themed('loginLogo');
+        }
+    }
+
+    .login-image {
+        height: 60vh;
+        background-size: cover;
+        background-position: center;
+
+        @include themify($themes) {
+            background-image: themed('loginImage');
+        }
+    }
+
+    .login-footer {
+        padding-bottom: 10px;
+
+        @include themify($themes) {
+            background-color: themed('loginBackgroundColor');
+        }
+
+        .login-form {
+            display: inline-block;
+            width: 75%;
+            padding-left: 25%;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 400;
+            vertical-align: middle;
+
+            @include themify($themes) {
+                color: themed('loginFormTextColor');
+            }
+
+            input {
+                width: 15%;
+                height: 32px;
+                margin: 8px 10px;
+                box-sizing: border-box;
+                border: none;
+                border-bottom: 2px solid;
+                outline: none;
+
+                @include themify($themes) {
+                    background-color: themed('loginBackgroundColor');
+                    border-color: themed('loginFormBorderColor');
+                }
+            }
+
+            ::placeholder {
+                font-size: 18px;
+                font-style: italic;
+
+                @include themify($themes) {
+                    color: themed('loginFormTextColor');
+                }
+            }
+
+            button {
+                display: inline-block;
+                width: 15%;
+                height: 32px;
+                margin-left: 10px;
+                border: none;
+                border-radius: 5px;
+                text-align: center;
+                transition: all 300ms ease-in-out;
+                outline: none;
+
+                @include themify($themes) {
+                    background-color: themed('loginButtonBackgroundColor');
+                    color: themed('loginButtonTextColor');
+                }
+
+                &:hover:enabled {
+
+                    @include themify($themes) {
+                        background-color: themed('loginButtonHoverColor');
+                    }
+                }
+
+                &:disabled {
+                    cursor: not-allowed;
+                    opacity: 0.65;
+                }
+            }
+
+            .validationMessage {
+                margin-right: 16%;
+
+                span {
+                    display: inline-block;
+                    box-sizing: border-box;
+                    width: 20%;
+                    font-size: 14px;
+                    color: #ed1c22;
+                }
+            }
+
+            p {
+                margin-top: 30px;
+            }
+        }
+
+        .login-info {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 25%;
+            margin-top: 20px;
+            padding: 45px 50px;
+            border-left: 2px solid;
+
+            @include themify($themes) {
+                color: themed('loginInfoTextColor');
+                border-color: themed('loginInfoBorderColor');
+            }
+        }
+    }
+}

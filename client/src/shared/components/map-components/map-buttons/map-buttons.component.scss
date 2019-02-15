@@ -1,0 +1,28 @@
+.get-my-location-btn, .focus-devices-btn {
+    top: 10px;
+    z-index: 500;
+}
+
+.get-my-location-btn {
+    right: 120px;
+}
+
+.focus-devices-btn {
+    right: 130px;
+}
+
+.map-settings-container {
+    position: relative;
+}
+
+#device-form {
+    .get-my-location-btn {
+        position: absolute;
+        right: 10px;
+    }
+
+    .focus-devices-btn {
+        position: absolute;
+        right: 50px;
+    }
+}

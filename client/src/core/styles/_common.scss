@@ -1,0 +1,12 @@
+.main-page-container {
+    display: flex;
+    & > div:nth-child(2) {
+        width: 100%;
+        margin-left: 15px;
+        margin-right: 35px;
+    }
+}
+
+.empty-anchor {
+    cursor: pointer;
+}

@@ -1,0 +1,30 @@
+$brand-green: #5d9732;
+$font-family: 'Roboto-Condensed', "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+// The prefix to use on all css classes from ant.
+$ant-prefix: ant;
+
+// -------- Colors -----------
+$primary-color: $brand-green;
+//$success-color: $green-6;
+//$processing-color: $blue-6;
+//$error-color: $red-6;
+//$highlight-color: $red-6;
+//$warning-color: $gold-6;
+$normal-color: #d9d9d9;
+
+// Color used by default to control hover and active backgrounds and for
+// alert info backgrounds.
+$primary-1: lighten($primary-color, 50%); // replace tint($primary-color, 90%)
+$primary-2: lighten($primary-color, 40%); // replace tint($primary-color, 80%)
+$primary-3: lighten($primary-color, 30%); // unused
+$primary-4: lighten($primary-color, 20%); // unused
+$primary-5: lighten($primary-color, 10%); // color used to control the text color in many active and hover states, replace tint($primary-color, 20%)
+$primary-6: $primary-color; // color used to control the text color of active buttons, don't use, use $primary-color
+$primary-7: darken($primary-color, 10%);
+$primary-8: darken($primary-color, 20%); // unused
+$primary-9: darken($primary-color, 30%); // unused
+$primary-10: darken($primary-color, 40%); // unused
+
+$body-background: #fff;
+$component-background: #fff;
