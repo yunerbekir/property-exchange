@@ -64,30 +64,27 @@ export class RegisterComponent extends React.Component {
     render() {
         return (
             <div className={'login-component'}>
-                <div className='login-footer'>
-                    <Form className={'login-form'} onSubmit={this.register}>
-                        <Input autoFocus={true}
-                               type='text' name='username'
-                               placeholder='username'
-                               value={this.state.username}
-                               onChange={this.handleUserInput}/>
-                        <span className={'inputErrors'}>{this.state.userError}</span>
-                        <Input type='password' name='password'
-                               placeholder='password'
-                               value={this.state.password}
-                               onChange={this.handleUserInput}/>
-                        <span className={'inputErrors'}>{this.state.passError}</span>
-                        <Input type='text' name='email'
-                               placeholder='email'
-                               value={this.state.email}
-                               onChange={this.handleUserInput}/>
-                        <span className={'inputErrors'}>{this.state.emailError}</span>
-                        <Button htmlType={'submit'}>
-                            <LoaderComponent visible={this.state.showLoader}>Register</LoaderComponent>
-                        </Button>
-                    </Form>
-                </div>
-
+                <Form className={'login-form'} onSubmit={this.register}>
+                    <Input autoFocus={true}
+                           type='text' name='username'
+                           placeholder='username'
+                           value={this.state.username}
+                           onChange={this.handleUserInput}/>
+                    <span className={'inputErrors'}>{this.state.userError}</span>
+                    <Input type='password' name='password'
+                           placeholder='password'
+                           value={this.state.password}
+                           onChange={this.handleUserInput}/>
+                    <span className={'inputErrors'}>{this.state.passError}</span>
+                    <Input type='text' name='email'
+                           placeholder='email'
+                           value={this.state.email}
+                           onChange={this.handleUserInput}/>
+                    <span className={'inputErrors'}>{this.state.emailError}</span>
+                    <Button htmlType={'submit'}>
+                        <LoaderComponent visible={this.state.showLoader}>Register</LoaderComponent>
+                    </Button>
+                </Form>
             </div>
 
         );

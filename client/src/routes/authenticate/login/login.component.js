@@ -51,23 +51,21 @@ export class LoginComponent extends React.Component {
     render() {
         return (
             <div className={'login-component'}>
-                <div className='login-footer'>
-                    <Form className={'login-form'} onSubmit={this.login}>
-                        <Input autoFocus={true}
-                               type='text' name='username'
-                               placeholder='Username...'
-                               value={this.state.username}
-                               onChange={this.handleUserInput}/>
-                        <Input type='password' name='password'
-                               placeholder='Password...'
-                               value={this.state.password}
-                               onChange={this.handleUserInput}/>
-                        <Input type='text' className={'hidden-input'}/>
-                        <Button htmlType={'submit'}>
-                            <LoaderComponent visible={this.state.showLoader}>Log in</LoaderComponent>
-                        </Button>
-                    </Form>
-                </div>
+                <Form className={'login-form'} onSubmit={this.login}>
+                    <Input autoFocus={true}
+                           type='text' name='username'
+                           placeholder='Username...'
+                           value={this.state.username}
+                           onChange={this.handleUserInput}/>
+                    <Input type='password' name='password'
+                           placeholder='Password...'
+                           value={this.state.password}
+                           onChange={this.handleUserInput}/>
+                    <Input type='text' className={'hidden-input'}/>
+                    <Button htmlType={'submit'}>
+                        <LoaderComponent visible={this.state.showLoader}>Log in</LoaderComponent>
+                    </Button>
+                </Form>
 
             </div>
 
