@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../login.component.scss';
+import '../login-register.component.scss';
+import '../authenticate.component.scss';
 import { Button, Form } from 'antd';
 import { LoaderComponent } from '../../../shared';
 import { AppLayoutModel } from '../../../shared/models/AppLayoutModel';
@@ -13,6 +14,7 @@ export class RegisterComponent extends React.Component {
             password: '',
             email:'',
             showLoader: false,
+            userError:'',
         };
 
         this.handleUserInput = this.handleUserInput.bind(this);
@@ -23,11 +25,27 @@ export class RegisterComponent extends React.Component {
     handleUserInput(e) {
         const name = e.target.name;
         const value = e.target.value;
-        this.setState({ [name]: value });
+        let validationError='';
+        switch(name){
+            case 'username':{
+                validationError=validateUserName(value);
+                break;
+            }
+            case 'password':{
+                validationError=validatePassword(value);
+                break;
+            }
+            case 'password':{
+                validationError=validateEmail(value);
+                break;
+            }
+            default: validationError="";
+        }
+
+        this.setState({ [name]: value, userError:validationError });
     }
 
     register(e) {
-        debugger;
         e.preventDefault();
         const { username, password,email } = this.state;
         this.props.registerAction({ username, password,email });
@@ -61,6 +79,7 @@ export class RegisterComponent extends React.Component {
                                placeholder='username'
                                value={this.state.username}
                                onChange={this.handleUserInput}/>
+                               <div>{this.state.userError}</div>
                              <input type='password' name='password'
                                placeholder='password'
                                value={this.state.password}
@@ -90,3 +109,20 @@ RegisterComponent.propTypes = {
     appLayout: PropTypes.instanceOf(AppLayoutModel).isRequired,
 };
 
+function validateUserName(name){
+    return name && !/^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$/i.test(name)
+    ? "Invalid username"
+    : "";
+}
+
+function validatePassword(pass){
+    return pass && !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i.test(pass)
+    ? "Invalid password"
+    : "";
+}
+
+function validateEmail(email){
+    return email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
+    ? 'Invalid email address'
+    : "";
+}

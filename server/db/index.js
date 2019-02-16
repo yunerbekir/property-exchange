@@ -118,13 +118,24 @@ async function insertMatchesData(tableName) {
     await pool.query(
         `CREATE TABLE IF NOT EXISTS ${tableName}(
                      id varchar PRIMARY KEY,
-                     userids varchar[]
+                     userids varchar[],
+                     configuration jsonb[]
                      )`
     );
 
-    await pool.query(`INSERT INTO ${tableName}(id, userids) VALUES($1, $2)`, [
+    await pool.query(`INSERT INTO ${tableName}(id, userids, configuration) VALUES($1, $2, $3)`, [
         '0',
         ['0', '1'],
+        [
+            {
+                'from': '0',
+                'to': '1',
+            },
+            {
+                'from': '1',
+                'to': '0',
+            },
+        ]
     ]);
 }
 

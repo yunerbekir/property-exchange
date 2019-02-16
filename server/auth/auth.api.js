@@ -14,13 +14,13 @@ api.post('/login', async (req, res, next) => {
         next({ statusCode: 400, message: 'Username and password can not be empty!' });
     } else {
         const { rows } = await db.query(`
-            SELECT json_build_object('username', username)
+            SELECT id, username, email
                      FROM ${db.tableNames.users}
                      WHERE username=$1 AND password=$2
         `, [username, encript(password)]);
 
-        if (rows[0] && rows[0].json_build_object) {
-            const user = rows[0].json_build_object;
+        if (rows && rows[0]) {
+            const user = rows[0];
             res.locals = {
                 data: {
                     token: jwt.sign({
@@ -47,12 +47,12 @@ api.post('/register', async (req, res, next) => {
         next({ statusCode: 400, message: 'Username and password can not be empty!' });
     } else {
         const { rows } = await db.query(`
-            SELECT json_build_object('username', username)
+                    SELECT id, username, email
                      FROM ${db.tableNames.users}
                      WHERE username=$1 OR email=$2
         `, [username, email]);
 
-        if (rows[0] && rows[0].json_build_object) {
+        if (rows && rows[0]) {
             next({ statusCode: 400, message: 'Username or Email is already taken!' });
 
         } else {
