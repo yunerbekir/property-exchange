@@ -11,15 +11,18 @@ module.exports = {
         `, [id]);
 
         const user = usersSqlResult.rows && usersSqlResult.rows[0];
-        delete user.password;
 
-        res.locals = {
-            data: user,
-            toastMessages: [],
-            confirmMessage: '',
-        };
-
-        next();
+        if (user) {
+            delete user.password;
+            res.locals = {
+                data: user,
+                toastMessages: [],
+                confirmMessage: '',
+            };
+            next();
+        } else {
+            next({ statusCode: 404, message: 'User not found' });
+        }
     },
     getUsers: async (req, res, next) => {
         const usersSqlResult = await db.query(`
@@ -36,7 +39,7 @@ module.exports = {
     },
 
     updateUser: async (req, res, next) => {
-        const { id } = req.auth;
+        const { id } = req.auth.user;
         const { isactive, currentproperty } = req.body;
         const result = await db.query(`UPDATE ${db.tableNames.users} 
                                          SET isactive=$1,
@@ -49,12 +52,40 @@ module.exports = {
 
         next();
     },
+
+    updateUserPois: async (req, res, next) => {
+        const { id } = req.auth.user;
+        const { pois } = req.body;
+        const result = await db.query(`UPDATE ${db.tableNames.users} 
+                                         SET pois=$1
+                                         WHERE id=$2
+                                       `, [pois, id]);
+        res.locals.data = {
+            appLayout: result
+        };
+
+        next();
+    },
+
+    updateUserRequestedProperties: async (req, res, next) => {
+        const { id } = req.auth.user;
+        const { requestedProperties } = req.body;
+        const result = await db.query(`UPDATE ${db.tableNames.users} 
+                                         SET requestedproperties=$1
+                                         WHERE id=$2
+                                       `, [requestedProperties, id]);
+        res.locals.data = {
+            appLayout: result
+        };
+
+        next();
+    },
     deleteUser: async (req, res, next) => {
-        const { id } = req.auth;
+        const { id } = req.auth.user;
         const result = await db.query(`DELETE FROM ${db.tableNames.users}
                                          WHERE id=$1`, [id]);
         res.locals.data = {
-            intersection: result
+            deleteResult: result
         };
         next();
     }
