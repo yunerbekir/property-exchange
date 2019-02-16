@@ -5,7 +5,6 @@ export const GET_DASHBOARD = 'GET_DASHBOARD';
 export const getDashboardAction = () => {
     return (dispatch, getState) => {
         return ajax.get({ url: 'dashboard' }).then((data) => {
-            console.log(data);
 
             return dispatch({
                 type: GET_DASHBOARD,

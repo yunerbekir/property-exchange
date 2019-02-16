@@ -48,7 +48,7 @@ export class ProfileComponent extends React.Component {
                             : null}
                     </div>
 
-                    <div>
+                    <div hidden={true}>
                         {this.props.profile && this.props.profile.pois ?
                             <MyPoisComponent pois={this.props.profile.pois} onPoisUpdated={this.onPoisUpdate}/>
                             : null}
