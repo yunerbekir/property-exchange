@@ -4,6 +4,7 @@ import { Card } from 'antd';
 import { MyPropertyComponent } from './my-property.component';
 import { MyPoisComponent } from './my-pois.component';
 import { MyRequestedPropertiesComponent } from './my-requested-properties.component';
+import { ProfileInfoComponent } from './profileInfo.component';
 
 export class ProfileComponent extends React.Component {
     constructor(props) {
@@ -40,6 +41,10 @@ export class ProfileComponent extends React.Component {
         return (
             <React.Fragment>
                 <Card>
+                <div>
+                        {this.props.profile?<ProfileInfoComponent userProfile={this.props.profile}/>
+                                            : null}
+                    </div>
                     <p>{this.props.profile && this.props.profile.username}</p>
                     <div>
                         {this.props.profile && this.props.profile.currentproperty ?
