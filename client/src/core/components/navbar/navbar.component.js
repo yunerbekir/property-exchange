@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangePasswordComponent } from '../../../routes/authenticate/change-password.component';
 
 import './navbar.component.scss';
-import { VersionInformationComponent } from '../../../routes/authenticate/version-information.component';
 
 export class NavbarComponent extends React.Component {
     state = {
