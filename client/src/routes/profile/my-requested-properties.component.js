@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import { Button, Card } from 'antd';
 import './my-requested-properties.component.scss';
 import { MyRequestedPropertiesModalComponent } from './my-requested-properties-modal.component';
+import req1 from '../../core/assets/images/req-1.png';
+import req2 from '../../core/assets/images/req-2.png';
+import req3 from '../../core/assets/images/req-3.png';
+import reqEmpty from '../../core/assets/images/req-empty.jpg';
+
+const mapImages = [req1, req2, req3];
 
 export class MyRequestedPropertiesComponent extends React.Component {
     propertiesModalRef = React.createRef();
@@ -34,8 +40,8 @@ export class MyRequestedPropertiesComponent extends React.Component {
                             return <Card key={`${property.address}-${idx}`}
                                          className={'prop-card'}
                                          style={{ width: 300 }}
-                                         cover={<img alt='example'
-                                                     src='https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png'/>}
+                                         cover={<img alt={'prop-maps'} style={{ height: '200px' }}
+                                                     src={property.address ? mapImages[idx] : reqEmpty}/>}
                             >
                                 <Card.Meta
                                     avatar={<div>{idx + 1}</div>}

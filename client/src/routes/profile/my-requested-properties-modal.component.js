@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input, List, Modal } from 'antd';
+import { Form, Input, Modal } from 'antd';
 import './my-requested-properties-modal.component.scss';
 
 export class MyRequestedPropertiesModalComponent extends React.Component {
