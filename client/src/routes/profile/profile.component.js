@@ -8,7 +8,7 @@ import { MyRequestedPropertiesComponent } from './my-requested-properties.compon
 export class ProfileComponent extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.onMyPropertyUpdate = this.onMyPropertyUpdate.bind(this);
         this.onPoisUpdate = this.onPoisUpdate.bind(this);
         this.onRequestedPropertiesUpdate = this.onRequestedPropertiesUpdate.bind(this);
@@ -27,8 +27,8 @@ export class ProfileComponent extends React.Component {
     }
 
     onRequestedPropertiesUpdate(newProperties) {
-        this.props.updateProfileRequestedPropertiesAction(newProperties).then(() => {
-            this.props.getProfileAction();
+        return this.props.updateProfileRequestedPropertiesAction(newProperties).then(() => {
+            return this.props.getProfileAction();
         });
     }
 

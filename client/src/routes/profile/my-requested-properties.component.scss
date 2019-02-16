@@ -1,0 +1,10 @@
+.requested-props-container {
+    margin-top:20px;
+    .prop-card-container .ant-card-body {
+        display: flex;
+    }
+
+    .prop-card{
+        margin: 0 5px;
+    }
+}

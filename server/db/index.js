@@ -95,7 +95,7 @@ async function insertUsersData(tableName) {
     await pool.query(`INSERT INTO ${tableName}(id, username, password, email, isActive, currentProperty, pois, requestedProperties) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`, [
         '1',
         'uner',
-        encript(Buffer.from('fatih', 'binary').toString('base64')),
+        encript(Buffer.from('uner', 'binary').toString('base64')),
         'uner@gmail.com',
         true,
         {
@@ -109,7 +109,17 @@ async function insertUsersData(tableName) {
                 'address': 'Sofia 11',
                 'rent': 100,
                 'size': 22,
-            }
+            },
+            {
+                'address': null,
+                'rent': null,
+                'size': null,
+            },
+            {
+                'address': null,
+                'rent': null,
+                'size': null,
+            },
         ],
     ]);
 }
