@@ -13,10 +13,11 @@ export class AuthenticateComponent extends React.Component {
             <div className={'authenticate-container'}>
                 <React.Fragment>
                     <Tabs defaultActiveKey='1'>
-                        <TabPane tab='Login' key='1'><LoginContainer/></TabPane>
-                        <TabPane tab='Register' key='2'><RegisterContainer/></TabPane>
+                        <TabPane tab='Login' key='1'><LoginContainer /></TabPane>
+                        <TabPane tab='Register' key='2'><RegisterContainer /></TabPane>
                     </Tabs>
                 </React.Fragment>
+
             </div>
         );
     }
