@@ -64,6 +64,16 @@ async function insertUsersData(tableName) {
         },
         [
             {
+                'location': 'Sofia bul. Al. Malinov 11',
+                'hourRange': '08-09'
+            },
+            {
+                'location': 'Sofia bul. Al. Malinov 11',
+                'hourRange': '18-19'
+            }
+        ],
+        [
+            {
                 'address': 'Sofia bul. Al. Malinov 11',
                 'rent': 300,
                 'size': 56,
@@ -77,16 +87,6 @@ async function insertUsersData(tableName) {
                 'address': 'Sofia bul. Al. Malinov 11',
                 'rent': 300,
                 'size': 56,
-            }
-        ],
-        [
-            {
-                'location': 'Sofia bul. Al. Malinov 11',
-                'hourRange': '08-09'
-            },
-            {
-                'location': 'Sofia bul. Al. Malinov 11',
-                'hourRange': '18-19'
             }
         ],
     ]);
@@ -103,15 +103,13 @@ async function insertUsersData(tableName) {
             'rent': 100,
             'size': 30,
         },
+        [],
         [
             {
                 'address': 'Sofia 11',
                 'rent': 100,
                 'size': 22,
             }
-        ],
-        [
-
         ],
     ]);
 }
