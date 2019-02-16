@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { RegisterComponent } from './register.component';
 import { withRouter } from 'react-router-dom';
-import { actions } from '../../core/+store/reducers/auth/+auth.reducer';
-import { actions as userActions } from '../../core/+store/reducers/users/users.reducer';
+import { actions } from '../../../core/+store/reducers/auth/+auth.reducer';
+import { actions as userActions } from '../../../core/+store/reducers/users/users.reducer';
 
 const mapDispatchToProps = {
     registerAction: actions.registerUserAction,

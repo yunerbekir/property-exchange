@@ -5,8 +5,8 @@ import { NavbarComponent } from '../core';
 import { AppLayoutModel } from '../shared/models/AppLayoutModel';
 
 import './main.component.scss';
-import { AuthenticateContainer } from './login/authenticate.container';
-import { TravelTimeContainer } from './travel-time/travel-time.container';
+import { AuthenticateContainer } from './authenticate/authenticate.container';
+import { DashboardContainer } from './dashboard/dashboard.container';
 import { DevicesContainer } from './settings/devices/devices.container';
 import { UsersContainer } from './settings/users/users.container';
 import { DefaultParamsContainer } from './settings/default-params/default-params.container';
@@ -104,7 +104,7 @@ export class MainComponent extends React.Component {
                 <Layout.Content style={{ padding: '0 50px', marginTop: 64 }}>
                     <Route exact path='/' render={() => (<Redirect to='/travel-time'/>)}/>
                     <Route exact path='/authenticate' render={() => (<Redirect to='/travel-time'/>)}/>
-                    <Route path={`/travel-time`} component={TravelTimeContainer}/>
+                    <Route path={`/dashboard`} component={DashboardContainer}/>
                     <Route path={`/settings/users`} render={() => this.props.auth.user.roles !== 'ROLE_ADMIN' ?
                         <Redirect to='/travel-time'/> : <UsersContainer/>}/>
                     <Route path={`/settings/devices`} render={() => this.props.auth.user.roles !== 'ROLE_ADMIN' ?

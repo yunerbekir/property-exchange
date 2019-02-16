@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AppLayoutModel } from '../../shared/models/AppLayoutModel';
-import {LoginContainer} from './login.container'
-import {RegisterContainer} from './register.container'
+import {LoginContainer} from './login/login.container'
+import {RegisterContainer} from './register/register.container'
 import { Button } from 'antd/lib/radio';
 
 export class AuthenticateComponent extends React.Component {
