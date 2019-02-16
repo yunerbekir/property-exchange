@@ -27,6 +27,22 @@ module.exports = {
     getUsers: async (req, res, next) => {
         const usersSqlResult = await db.query(`
             SELECT id, username, email, isactive, currentproperty FROM ${db.tableNames.users}
+            WHERE isactive=true
+        `);
+
+        res.locals = {
+            data: usersSqlResult.rows,
+            toastMessages: [],
+            confirmMessage: '',
+        };
+
+        next();
+    },
+
+    getFullUsers: async (req, res, next) => {
+        const usersSqlResult = await db.query(`
+            SELECT * FROM ${db.tableNames.users}
+            WHERE isactive=true
         `);
 
         res.locals = {
