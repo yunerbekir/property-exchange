@@ -34,11 +34,11 @@ const initialState = {
 };
 
 try {
-    const parsedUser = JSON.parse(atob(localStorage.token.split('.')[1]));
+    const parsedUser = JSON.parse(atob(localStorage.token.split('.')[1])).user;
     initialState.user = {
-        username: parsedUser.sub,
+        username: parsedUser.username,
         email: parsedUser.email,
-        roles: parsedUser.roles
+        id: parsedUser.id
     };
 } catch (e) {
     initialState.user = {};

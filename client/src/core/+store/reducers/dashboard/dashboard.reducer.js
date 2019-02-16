@@ -2,23 +2,14 @@ import { ajax, reducerUtils } from '../../../index';
 
 export const GET_DASHBOARD = 'GET_DASHBOARD';
 
-const getDashboardAction = ({ username, password }) => {
+export const getDashboardAction = () => {
     return (dispatch, getState) => {
-        return ajax.post({ url: 'auth/login', postData: { username, password: btoa(password) } }).then(({ token }) => {
-            localStorage.token = token;
-
-            const parsedUser = JSON.parse(atob(token.split('.')[1]));
-            const user = {
-                username: parsedUser.sub,
-                roles: parsedUser.roles
-            };
+        return ajax.get({ url: 'dashboard' }).then((data) => {
+            console.log(data);
 
             return dispatch({
                 type: GET_DASHBOARD,
-                payload: {
-                    token,
-                    data
-                }
+                payload: data
             });
         }).catch((error) => {
             reducerUtils.handleAjaxErrors(error);
@@ -26,7 +17,7 @@ const getDashboardAction = ({ username, password }) => {
     };
 };
 
-const dashboardReducer = {
+const getDashboardReducer = {
     type: GET_DASHBOARD,
     handler: (state, action) => ({
         ...state, ...action.payload
@@ -34,23 +25,22 @@ const dashboardReducer = {
 };
 
 
-
-
 export const actions = {
-  getDashboardAction,
+    getDashboardAction,
 };
 
 const ACTION_HANDLERS = {};
 
 const REDUCERS = [
-    dashboardReducer,
+    getDashboardReducer,
 ];
 
 REDUCERS.forEach(reducer => ACTION_HANDLERS[reducer.type] = reducer.handler);
 
+const initState = {};
 
-export function dashboardReducer(state = initState, action){
-  const handler= ACTION_HANDLERS[action.type];
+export function dashboardReducer(state = initState, action) {
+    const handler = ACTION_HANDLERS[action.type];
 
-  return handler? handler(state,action): state;
+    return handler ? handler(state, action) : state;
 }

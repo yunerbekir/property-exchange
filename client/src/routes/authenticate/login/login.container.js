@@ -3,10 +3,11 @@ import { LoginComponent } from './login.component';
 import { withRouter } from 'react-router-dom';
 import { actions } from '../../../core/+store/reducers/auth/+auth.reducer';
 import { actions as userActions } from '../../../core/+store/reducers/users/users.reducer';
+import { registerUserAction } from '../../../core/+store/reducers/users/register-user.reducer';
 
 const mapDispatchToProps = {
     loginAction: actions.loginAction,
-    addUserAction: userActions.addUserAction,
+    registerUserAction,
 };
 
 const mapStateToProps = ({ appLayout }) => ({

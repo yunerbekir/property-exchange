@@ -7,10 +7,11 @@ export const loginAction = ({ username, password }) => {
         return ajax.post({ url: 'auth/login', postData: { username, password: btoa(password) } }).then(({ token }) => {
             localStorage.token = token;
 
-            const parsedUser = JSON.parse(atob(token.split('.')[1]));
+            const parsedUser = JSON.parse(atob(localStorage.token.split('.')[1])).user;
             const user = {
-                username: parsedUser.sub,
-                roles: parsedUser.roles
+                username: parsedUser.username,
+                email: parsedUser.email,
+                id: parsedUser.id
             };
 
             return dispatch({
