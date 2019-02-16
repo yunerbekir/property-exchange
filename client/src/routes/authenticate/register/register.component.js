@@ -35,7 +35,7 @@ export class RegisterComponent extends React.Component {
                 validationError=validatePassword(value);
                 break;
             }
-            case 'password':{
+            case 'email':{
                 validationError=validateEmail(value);
                 break;
             }
@@ -86,7 +86,7 @@ export class RegisterComponent extends React.Component {
                                onChange={this.handleUserInput}/>
                             <input type='text' name='email'
                                placeholder='email'
-                               value={this.state.password}
+                               value={this.state.email}
                                onChange={this.handleUserInput}/>
                         <Button htmlType={'submit'}>
                             <LoaderComponent visible={this.state.showLoader}>Register</LoaderComponent>
