@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import LogoWhite from '../../../core/assets/images/InTime_logo_login@2x.png';
 import LogoColored from '../../../core/assets/images/InTime_logo_login@2x.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ChangePasswordComponent } from '../../../routes/login/change-password.component';
+import { ChangePasswordComponent } from '../../../routes/authenticate/change-password.component';
 
 import './navbar.component.scss';
-import { VersionInformationComponent } from '../../../routes/login/version-information.component';
+import { VersionInformationComponent } from '../../../routes/authenticate/version-information.component';
 
 export class NavbarComponent extends React.Component {
     state = {

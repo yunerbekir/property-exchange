@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AppLayoutModel } from '../../shared/models/AppLayoutModel';
-import {LoginContainer} from './login/login.container'
-import {RegisterContainer} from './register/register.container'
+import { LoginContainer } from './login/login.container'
+import { RegisterContainer } from './register/register.container'
 import { Button } from 'antd/lib/radio';
+import { Card } from 'antd';
 
 export class AuthenticateComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLogin:true,
+            isLogin: true,
         };
     }
 
@@ -20,15 +21,18 @@ export class AuthenticateComponent extends React.Component {
     }
 
     render() {
-        const btnText = this.state.isLogin?'Register':'Login';
+        const btnText = this.state.isLogin ? 'Register' : 'Login';
 
         return (
             <React.Fragment>
-                {this.state.isLogin?<LoginContainer/>:<RegisterContainer/>}
+                <Card className='form'>
+                    {this.state.isLogin ? <LoginContainer /> : <RegisterContainer />}
+
+                </Card>
                 <div>
-                    <Button className='changeFormButton' htmlType={'submit'} align={'center'} 
-                    onClick={() => this.setState({isLogin: !this.state.isLogin})}>
-                    {btnText}
+                    <Button className='changeFormButton' htmlType={'submit'} align={'center'}
+                        onClick={() => this.setState({ isLogin: !this.state.isLogin })}>
+                        {btnText}
                     </Button>
                 </div>
             </React.Fragment>

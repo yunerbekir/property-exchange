@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../login.component.scss';
+import '../login-register.component.scss';
+import '../authenticate.component.scss';
 import { Button, Form } from 'antd';
 import { LoaderComponent } from '../../../shared';
 import { AppLayoutModel } from '../../../shared/models/AppLayoutModel';
