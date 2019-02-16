@@ -1,5 +1,10 @@
 import { getProfileReducer, getProfileAction } from './get-profile.reducer';
 import { updateProfileReducer, updateProfileAction } from './update-profile.reducer';
+import { updateProfilePoisAction, updateProfilePoisReducer } from './update-profile-pois.reducer';
+import {
+    updateProfileRequestedPropertiesAction,
+    updateProfileRequestedPropertiesReducer
+} from './update-profile-requested-properties.reducer';
 
 // ------------------------------------
 // Actions
@@ -7,11 +12,15 @@ import { updateProfileReducer, updateProfileAction } from './update-profile.redu
 export const actions = {
     getProfileAction,
     updateProfileAction,
+    updateProfilePoisAction,
+    updateProfileRequestedPropertiesAction,
 };
 
 const REDUCERS = [
     getProfileReducer,
     updateProfileReducer,
+    updateProfilePoisReducer,
+    updateProfileRequestedPropertiesReducer,
 ];
 
 const ACTION_HANDLERS = {};
