@@ -1,35 +1,7 @@
-.changeFormButton{
-margin-left: 52vw !important;
-}
-
-.ant-layout{
-    margin-top: 150px;
-    padding-bottom: 10px;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 7px;
-}
-
-div > .ant-tabs-nav{
-    // margin-left: 39%;
-    // width: 50vw;
+.authenticate-container {
+    max-width: 320px;
+    height: 100vh;
+    margin: auto;
     display: flex;
-    justify-content: space-between;
-    font-size: 1.2em;
-}
-
-.ant-tabs-nav-wrap{
-    
-    width: 80%;
-   
-    margin: 0px auto;
-    height: 7vh;
-}
-
-.inputErrors{
-    margin-top: -5vh;
-    margin-left: 10vw;
-    color: red;
-    font-style: italic;
+    align-items: center;
 }

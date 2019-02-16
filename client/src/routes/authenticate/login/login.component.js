@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../login-register.component.scss';
-import '../authenticate.component.scss';
 
-import { Button, Form } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { LoaderComponent } from '../../../shared';
-import { registerUserAction } from '../../../core/+store/reducers/users/register-user.reducer';
 
 export class LoginComponent extends React.Component {
     constructor(props) {
@@ -53,19 +51,18 @@ export class LoginComponent extends React.Component {
     render() {
         return (
             <div className={'login-component'}>
-
-
                 <div className='login-footer'>
                     <Form className={'login-form'} onSubmit={this.login}>
-                        <input autoFocus={true}
+                        <Input autoFocus={true}
                                type='text' name='username'
                                placeholder='Username...'
                                value={this.state.username}
                                onChange={this.handleUserInput}/>
-                        <input type='password' name='password'
+                        <Input type='password' name='password'
                                placeholder='Password...'
                                value={this.state.password}
                                onChange={this.handleUserInput}/>
+                        <Input type='text' className={'hidden-input'}/>
                         <Button htmlType={'submit'}>
                             <LoaderComponent visible={this.state.showLoader}>Log in</LoaderComponent>
                         </Button>
