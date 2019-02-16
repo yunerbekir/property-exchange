@@ -14,6 +14,7 @@ const pool = new Pool({
 const schemaName = 'public';
 const tableNames = {
     users: schemaName + '.users',
+    matches: schemaName + '.matches',
 };
 
 module.exports = {
@@ -28,6 +29,7 @@ module.exports = {
             }
 
             await insertUsersData(tableNames.users);
+            await insertMatchesData(tableNames.matches);
         }
         catch (e) {
             throw e;
@@ -42,19 +44,87 @@ async function insertUsersData(tableName) {
                      username varchar,
                      password varchar,
                      email varchar,
-                     currentproperty jsonb
+                     isActive boolean,
+                     currentProperty jsonb,
+                     pois jsonb[],
+                     requestedProperties jsonb[]
                      )`
     );
 
-    await pool.query(`INSERT INTO ${tableName}(id, username, password, email, currentproperty) VALUES($1, $2, $3, $4, $5)`, [
+    await pool.query(`INSERT INTO ${tableName}(id, username, password, email, isActive, currentProperty, pois, requestedProperties) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`, [
         '0',
-        'prop',
-        encript(Buffer.from('prop', 'binary').toString('base64')),
-        'prop@gmail.com',
+        'fatih',
+        encript(Buffer.from('fatih', 'binary').toString('base64')),
+        'f.hyuseinov@gmail.com',
+        true,
         {
             'address': 'Sofia bul. Bulgaria 56',
             'rent': 500,
             'size': 56,
-        }
+        },
+        [
+            {
+                'location': 'Sofia bul. Al. Malinov 11',
+                'hourRange': '08-09'
+            },
+            {
+                'location': 'Sofia bul. Al. Malinov 11',
+                'hourRange': '18-19'
+            }
+        ],
+        [
+            {
+                'address': 'Sofia bul. Al. Malinov 11',
+                'rent': 300,
+                'size': 56,
+            },
+            {
+                'address': 'Sofia bul. G.M Dimitroff 21',
+                'rent': 400,
+                'size': 21,
+            },
+            {
+                'address': 'Sofia bul. Al. Malinov 11',
+                'rent': 300,
+                'size': 56,
+            }
+        ],
+    ]);
+
+
+    await pool.query(`INSERT INTO ${tableName}(id, username, password, email, isActive, currentProperty, pois, requestedProperties) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`, [
+        '1',
+        'uner',
+        encript(Buffer.from('fatih', 'binary').toString('base64')),
+        'uner@gmail.com',
+        true,
+        {
+            'address': 'Sofia st. town',
+            'rent': 100,
+            'size': 30,
+        },
+        [],
+        [
+            {
+                'address': 'Sofia 11',
+                'rent': 100,
+                'size': 22,
+            }
+        ],
     ]);
 }
+
+async function insertMatchesData(tableName) {
+    await pool.query(
+        `CREATE TABLE IF NOT EXISTS ${tableName}(
+                     id varchar PRIMARY KEY,
+                     userids varchar[]
+                     )`
+    );
+
+    await pool.query(`INSERT INTO ${tableName}(id, userids) VALUES($1, $2)`, [
+        '0',
+        ['0', '1'],
+    ]);
+}
+
