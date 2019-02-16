@@ -58,9 +58,9 @@ async function insertUsersData(tableName) {
         'f.hyuseinov@gmail.com',
         true,
         {
-            'address': 'Sofia bul. Bulgaria 56',
+            'address': 'Sofia',
             'rent': 500,
-            'size': 56,
+            'size': 50,
         },
         [
             {
@@ -79,9 +79,9 @@ async function insertUsersData(tableName) {
                 'size': 56,
             },
             {
-                'address': 'Sofia bul. G.M Dimitroff 21',
+                'address': 'Plovdiv',
                 'rent': 400,
-                'size': 21,
+                'size': 30,
             },
             {
                 'address': 'Sofia bul. Al. Malinov 11',
@@ -99,16 +99,16 @@ async function insertUsersData(tableName) {
         'uner@gmail.com',
         true,
         {
-            'address': 'Sofia st. town',
+            'address': 'Plovdiv',
             'rent': 100,
-            'size': 30,
+            'size': 60,
         },
         [],
         [
             {
-                'address': 'Sofia 11',
-                'rent': 100,
-                'size': 22,
+                'address': 'Sofia',
+                'rent': 1000,
+                'size': 20,
             },
             {
                 'address': null,
