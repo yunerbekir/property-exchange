@@ -12,9 +12,11 @@ export class RegisterComponent extends React.Component {
         this.state = {
             username: '',
             password: '',
-            email:'',
+            email: '',
             showLoader: false,
-            userError:'',
+            userError: '',
+            passError: '',
+            emailError: '',
         };
 
         this.handleUserInput = this.handleUserInput.bind(this);
@@ -25,30 +27,35 @@ export class RegisterComponent extends React.Component {
     handleUserInput(e) {
         const name = e.target.name;
         const value = e.target.value;
-        let validationError='';
-        switch(name){
-            case 'username':{
-                validationError=validateUserName(value);
+        let validationError = '';
+        switch (name) {
+            case 'username': {
+                validationError = validateUserName(value);
+                this.setState({ [name]: value, userError: validationError });
                 break;
             }
-            case 'password':{
-                validationError=validatePassword(value);
+            case 'password': {
+                validationError = validatePassword(value);
+                this.setState({ [name]: value, passError: validationError });
                 break;
             }
-            case 'email':{
-                validationError=validateEmail(value);
+            case 'email': {
+                validationError = validateEmail(value);
+                this.setState({ [name]: value, emailError: validationError });
                 break;
             }
-            default: validationError="";
+            default: validationError = "";
         }
 
-        this.setState({ [name]: value, userError:validationError });
+
+
+
     }
 
     register(e) {
         e.preventDefault();
-        const { username, password,email } = this.state;
-        this.props.registerAction({ username, password,email });
+        const { username, password, email } = this.state;
+        this.props.registerAction({ username, password, email });
     }
 
     performLoginAction({ username, password }) {
@@ -74,20 +81,22 @@ export class RegisterComponent extends React.Component {
 
                 <div className='login-footer'>
                     <Form className={'login-form'} onSubmit={this.register}>
-                            <input autoFocus={true}
-                               type='text' name='username'
-                               placeholder='username'
-                               value={this.state.username}
-                               onChange={this.handleUserInput}/>
-                               <div>{this.state.userError}</div>
-                             <input type='password' name='password'
-                               placeholder='password'
-                               value={this.state.password}
-                               onChange={this.handleUserInput}/>
-                            <input type='text' name='email'
-                               placeholder='email'
-                               value={this.state.email}
-                               onChange={this.handleUserInput}/>
+                        <input autoFocus={true}
+                            type='text' name='username'
+                            placeholder='username'
+                            value={this.state.username}
+                            onChange={this.handleUserInput} />
+                        <span className={'inputErrors'}>{this.state.userError}</span>
+                        <input type='password' name='password'
+                            placeholder='password'
+                            value={this.state.password}
+                            onChange={this.handleUserInput} />
+                        <span className={'inputErrors'}>{this.state.passError}</span>
+                        <input type='text' name='email'
+                            placeholder='email'
+                            value={this.state.email}
+                            onChange={this.handleUserInput} />
+                        <span className={'inputErrors'}>{this.state.emailError}</span>
                         <Button htmlType={'submit'}>
                             <LoaderComponent visible={this.state.showLoader}>Register</LoaderComponent>
                         </Button>
@@ -109,20 +118,20 @@ RegisterComponent.propTypes = {
     appLayout: PropTypes.instanceOf(AppLayoutModel).isRequired,
 };
 
-function validateUserName(name){
+function validateUserName(name) {
     return name && !/^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$/i.test(name)
-    ? "Invalid username"
-    : "";
+        ? "Invalid username"
+        : "";
 }
 
-function validatePassword(pass){
+function validatePassword(pass) {
     return pass && !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i.test(pass)
-    ? "Invalid password"
-    : "";
+        ? "Invalid password"
+        : "";
 }
 
-function validateEmail(email){
+function validateEmail(email) {
     return email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
-    ? 'Invalid email address'
-    : "";
+        ? 'Invalid email address'
+        : "";
 }

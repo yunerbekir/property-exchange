@@ -1,6 +1,9 @@
 @import '../../shared/styles/colors';
 
 .login-component {
+
+    width: 100%;
+    margin: 0px auto;
     @include themify($themes) {
         background-color: themed('loginBackgroundColor');
     }
@@ -28,7 +31,6 @@
     }
 
     .login-footer {
-        padding-bottom: 10px;
 
         @include themify($themes) {
             background-color: themed('loginBackgroundColor');
@@ -36,9 +38,9 @@
 
         .login-form {
             display: grid;
-            padding-left: 50%;
+            // padding-left: 39%;
             text-align: center;
-            font-size: 16px;
+            font-size: 1.2em;
             font-weight: 400;
             vertical-align: middle;
 
@@ -47,9 +49,9 @@
             }
 
             input {
-                width: 15%;
+                width: 45%;
                 height: 32px;
-                margin: 8px 10px;
+                margin: 8px;
                 box-sizing: border-box;
                 border: none;
                 border-bottom: 2px solid;
@@ -74,7 +76,7 @@
                 display: inline-block;
                 width: 15%;
                 height: 32px;
-                margin-left: 10px;
+                margin-left: 16%;
                 border: none;
                 border-radius: 5px;
                 text-align: center;
