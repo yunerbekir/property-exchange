@@ -8,8 +8,8 @@ module.exports = async () => {
             WHERE isactive=true
         `);
 
-    for (let i = 0; i < activeUsers.length; i++) {
-        for (let j = 0; j < activeUsers.length; j++) {
+    for (let i = 0; i < activeUsers.length - 1; i++) {
+        for (let j = i + 1; j < activeUsers.length; j++) {
             if (activeUsers[i].id !== activeUsers[j].id) {
                 const myPropMatch = findMatch(activeUsers[i], activeUsers[j]);
                 const oppositePropMatch = findMatch(activeUsers[j], activeUsers[i]);

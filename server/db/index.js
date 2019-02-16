@@ -74,9 +74,9 @@ async function insertUsersData(tableName) {
         ],
         [
             {
-                'address': 'Sofia bul. Al. Malinov 11',
+                'address': 'Varna',
                 'rent': 300,
-                'size': 56,
+                'size': 10,
             },
             {
                 'address': 'Plovdiv',
