@@ -57,12 +57,44 @@ api.post('/register', async (req, res, next) => {
 
         } else {
             try {
-                await db.query(`INSERT INTO ${db.tableNames.users}(id, username, password, email, currentproperty) VALUES($1, $2, $3, $4, $5)`, [
+                await db.query(`INSERT INTO ${db.tableNames.users}(
+                     id,
+                     username,
+                     password,
+                     email,
+                     isActive,
+                     currentProperty,
+                     pois,
+                     requestedProperties
+                     ) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`, [
                     id,
                     username,
                     encript(password),
                     email,
-                    {}
+                    true,
+                    {
+                        'address': null,
+                        'rent': null,
+                        'size': null,
+                    },
+                    [],
+                    [
+                        {
+                            'address': null,
+                            'rent': null,
+                            'size': null,
+                        },
+                        {
+                            'address': null,
+                            'rent': null,
+                            'size': null,
+                        },
+                        {
+                            'address': null,
+                            'rent': null,
+                            'size': null,
+                        }
+                    ],
                 ]);
 
                 const user = { username };

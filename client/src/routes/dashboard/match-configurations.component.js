@@ -35,7 +35,7 @@ export class MatchConfigurationsComponent extends React.Component {
             <div className={'match-configs-container'}>
                 <div className={'group-header'}><Icon type='appstore'/> My Matches</div>
                 <div className={'group-body'}>
-                    {this.props.dashboard && this.props.dashboard.myMatches ? this.props.dashboard.myMatches.map((myMatch, idx) => {
+                    {this.props.dashboard && this.props.dashboard.myMatches && this.props.dashboard.myMatches.length > 0 ? this.props.dashboard.myMatches.map((myMatch, idx) => {
                         return <div className={'match-item'} key={idx}>
                             <div className={'header'}>
                                 <span style={{ marginRight: '100px', fontSize: '16px' }}>Configuration {idx + 1}</span>
