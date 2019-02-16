@@ -2,8 +2,7 @@ import React from 'react';
 import { Icon, Layout, Menu } from 'antd';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import LogoWhite from '../../../core/assets/images/InTime_logo_login@2x.png';
-import LogoColored from '../../../core/assets/images/InTime_logo_login@2x.png';
+import LogoColored from '../../../core/assets/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangePasswordComponent } from '../../../routes/authenticate/change-password.component';
 
@@ -36,7 +35,7 @@ export class NavbarComponent extends React.Component {
         const { user, onLogout, onChangePassword } = this.props;
 
         const isThemeDay = true;
-        const navLogoSrc = isThemeDay ? LogoColored : LogoWhite;
+        const navLogoSrc = isThemeDay ? LogoColored : LogoColored;
 
         return (<Layout.Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
             <div className='logo'>
