@@ -31,44 +31,9 @@ export class MainComponent extends React.Component {
         showLoader: true
     };
 
-    static getThemeName(theme) {
-        switch (theme) {
-            case 'Day Theme':
-                return 'day';
-            case 'Night Theme':
-                return 'night';
-            default:
-                return 'day';
-        }
-    }
-
-    static updateBodyThemeClass(theme) {
-        Array.from(document.documentElement.classList).filter(c => c.indexOf('theme-') > -1).forEach(obsoleteThemeClass => document.documentElement.classList.remove(obsoleteThemeClass));
-
-        document.documentElement.classList.add(`theme-${MainComponent.getThemeName(theme)}`);
-    }
-
-    getAllLayoutSettings() {
-        this.props.getAppLayoutSettingsAction().then(() => {
-            this.setState({ showLoader: false });
-        });
-    }
-
-    componentDidMount() {
-        MainComponent.updateBodyThemeClass(this.props.appLayout.getSelectedTheme());
-
-        this.props.getApiVersionAction();
-        this.getAllLayoutSettings();
-    }
-
     componentWillReceiveProps(nextProps) {
         // Fetch settings in the moment we are logging in
         if (!this.props.auth.token && nextProps.auth.token) {
-            this.getAllLayoutSettings();
-        }
-
-        if (this.props.appLayout.getSelectedTheme() !== nextProps.appLayout.getSelectedTheme()) {
-            MainComponent.updateBodyThemeClass(nextProps.appLayout.getSelectedTheme());
         }
     }
 
