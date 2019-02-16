@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'antd';
+import { MatchConfigurationsComponent } from './match-configurations.component';
 
 export class DashboardComponent extends React.Component {
     componentDidMount() {
@@ -13,6 +14,8 @@ export class DashboardComponent extends React.Component {
                 <Card>
                     <p>Active Users: {this.props.dashboard.activeUsers && this.props.dashboard.activeUsers.length}</p>
                 </Card>
+
+                <MatchConfigurationsComponent dashboard={this.props.dashboard}/>
             </React.Fragment>
 
         );
