@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import { Card } from 'antd';
 
 export class DashboardComponent extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         this.props.getDashboardAction();
     }
