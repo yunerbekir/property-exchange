@@ -5,7 +5,7 @@ import { NavbarComponent } from '../core';
 import { AppLayoutModel } from '../shared/models/AppLayoutModel';
 
 import './main.component.scss';
-import { LoginContainer } from './login/login.container';
+import { AuthenticateContainer } from './login/authenticate.container';
 import { TravelTimeContainer } from './travel-time/travel-time.container';
 import { DevicesContainer } from './settings/devices/devices.container';
 import { UsersContainer } from './settings/users/users.container';
@@ -75,18 +75,18 @@ export class MainComponent extends React.Component {
     render() {
         const isLogged = !!this.props.auth.token;
 
-        if ((this.props.history.location.pathname === '/login' && this.props.history.location.search.indexOf('?user=') > -1) || !isLogged) {
+        if ((this.props.history.location.pathname === '/authenticate' && this.props.history.location.search.indexOf('?user=') > -1) || !isLogged) {
             return (
                 <Layout>
                     <div>
                         <Route path='/' render={({ location }) => {
-                            if (location.pathname !== '/login') {
-                                return <Redirect to='/login'/>;
+                            if (location.pathname !== '/authenticate') {
+                                return <Redirect to='/authenticate'/>;
                             }
 
                             return null;
                         }}/>
-                        <Route path={`/login`} component={LoginContainer}/>
+                        <Route path={`/authenticate`} component={AuthenticateContainer}/>
                     </div>
                 </Layout>
             );
@@ -103,7 +103,7 @@ export class MainComponent extends React.Component {
                 />
                 <Layout.Content style={{ padding: '0 50px', marginTop: 64 }}>
                     <Route exact path='/' render={() => (<Redirect to='/travel-time'/>)}/>
-                    <Route exact path='/login' render={() => (<Redirect to='/travel-time'/>)}/>
+                    <Route exact path='/authenticate' render={() => (<Redirect to='/travel-time'/>)}/>
                     <Route path={`/travel-time`} component={TravelTimeContainer}/>
                     <Route path={`/settings/users`} render={() => this.props.auth.user.roles !== 'ROLE_ADMIN' ?
                         <Redirect to='/travel-time'/> : <UsersContainer/>}/>

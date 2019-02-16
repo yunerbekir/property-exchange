@@ -5,31 +5,32 @@ import { Button, Form } from 'antd';
 import { LoaderComponent } from '../../shared';
 import { AppLayoutModel } from '../../shared/models/AppLayoutModel';
 
-export class LoginComponent extends React.Component {
+export class RegisterComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
             password: '',
+            email:'',
             showLoader: false,
         };
 
         this.handleUserInput = this.handleUserInput.bind(this);
-        this.login = this.login.bind(this);
+        this.register = this.register.bind(this);
         this.performLoginAction = this.performLoginAction.bind(this);
     }
 
     handleUserInput(e) {
         const name = e.target.name;
         const value = e.target.value;
-
         this.setState({ [name]: value });
     }
 
-    login(e) {
+    register(e) {
+        debugger;
         e.preventDefault();
-        const { username, password } = this.state;
-        this.performLoginAction({ username, password });
+        const { username, password,email } = this.state;
+        this.props.registerAction({ username, password,email });
     }
 
     performLoginAction({ username, password }) {
@@ -54,14 +55,18 @@ export class LoginComponent extends React.Component {
 
 
                 <div className='login-footer'>
-                    <Form className={'login-form'} onSubmit={this.login}>
-                        <input autoFocus={true}
+                    <Form className={'login-form'} onSubmit={this.register}>
+                            <input autoFocus={true}
                                type='text' name='username'
-                               placeholder='Username...'
+                               placeholder='username'
                                value={this.state.username}
                                onChange={this.handleUserInput}/>
-                        <input type='password' name='password'
-                               placeholder='Password...'
+                             <input type='password' name='password'
+                               placeholder='password'
+                               value={this.state.password}
+                               onChange={this.handleUserInput}/>
+                            <input type='text' name='email'
+                               placeholder='email'
                                value={this.state.password}
                                onChange={this.handleUserInput}/>
                         <Button htmlType={'submit'}>
@@ -76,11 +81,12 @@ export class LoginComponent extends React.Component {
     }
 }
 
-LoginComponent.propTypes = {
+RegisterComponent.propTypes = {
     addUserAction: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     loginAction: PropTypes.func.isRequired,
+    registerAction: PropTypes.func.isRequired,
     appLayout: PropTypes.instanceOf(AppLayoutModel).isRequired,
 };
 

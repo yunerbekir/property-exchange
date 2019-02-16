@@ -1,7 +1,6 @@
 @import '../../shared/styles/colors';
 
 .login-component {
-    min-height: 100vh;
     @include themify($themes) {
         background-color: themed('loginBackgroundColor');
     }
@@ -36,9 +35,8 @@
         }
 
         .login-form {
-            display: inline-block;
-            width: 75%;
-            padding-left: 25%;
+            display: grid;
+            padding-left: 50%;
             text-align: center;
             font-size: 16px;
             font-weight: 400;
@@ -133,3 +131,5 @@
         }
     }
 }
+
+

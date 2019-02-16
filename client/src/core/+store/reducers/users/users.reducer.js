@@ -1,4 +1,4 @@
-import { addUserReducer, addUserAction } from './add-user.reducer';
+import { registerUserReducer, registerUserAction } from './register-user.reducer';
 import { getUsersReducer, getUsersAction } from './get-users.reducer';
 import { removeUserReducer, removeUserAction } from './remove-user.reducer';
 import { updateUserActionReducer, updateUserAction } from './update-user.reducer';
@@ -8,14 +8,14 @@ import { dataSortFunction } from '../../..';
 // Actions
 // ------------------------------------
 export const actions = {
-    addUserAction,
+    registerUserAction,
     getUsersAction,
     removeUserAction,
     updateUserAction,
 };
 
 const REDUCERS = [
-    addUserReducer,
+    registerUserReducer,
     getUsersReducer,
     removeUserReducer,
     updateUserActionReducer,
