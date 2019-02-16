@@ -13,9 +13,9 @@ export class RegisterComponent extends React.Component {
             password: '',
             email: '',
             showLoader: false,
-            userError: '',
-            passError: '',
-            emailError: '',
+            userError: false,
+            passError: false,
+            emailError: false,
         };
 
         this.handleUserInput = this.handleUserInput.bind(this);
@@ -66,21 +66,21 @@ export class RegisterComponent extends React.Component {
             <div className={'login-component'}>
                 <Form className={'login-form'} onSubmit={this.register}>
                     <Input autoFocus={true}
-                           type='text' name='username'
-                           placeholder='username'
-                           value={this.state.username}
-                           onChange={this.handleUserInput}/>
-                    <span className={'inputErrors'}>{this.state.userError}</span>
+                        type='text' name='username'
+                        placeholder='username'
+                        value={this.state.username}
+                        onChange={this.handleUserInput}
+                        style={fieldColor(this.state.userError)}/>
                     <Input type='password' name='password'
-                           placeholder='password'
-                           value={this.state.password}
-                           onChange={this.handleUserInput}/>
-                    <span className={'inputErrors'}>{this.state.passError}</span>
+                        placeholder='password'
+                        value={this.state.password}
+                        onChange={this.handleUserInput} 
+                        style={fieldColor(this.state.passError)}/>
                     <Input type='text' name='email'
-                           placeholder='email'
-                           value={this.state.email}
-                           onChange={this.handleUserInput}/>
-                    <span className={'inputErrors'}>{this.state.emailError}</span>
+                        placeholder='email'
+                        value={this.state.email}
+                        onChange={this.handleUserInput} 
+                        style={fieldColor(this.state.emailError)}/>
                     <Button htmlType={'submit'}>
                         <LoaderComponent visible={this.state.showLoader}>Register</LoaderComponent>
                     </Button>
@@ -98,19 +98,19 @@ RegisterComponent.propTypes = {
 };
 
 function validateUserName(name) {
-    return name && !/^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$/i.test(name)
-        ? 'Invalid username'
-        : '';
+    return name && !/^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){6,18}[a-zA-Z0-9]$/i.test(name);
 }
 
 function validatePassword(pass) {
-    return pass && !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i.test(pass)
-        ? 'Invalid password'
-        : '';
+    return pass && !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i.test(pass);
 }
 
 function validateEmail(email) {
-    return email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
-        ? 'Invalid email address'
-        : '';
+    return email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+}
+
+function fieldColor(hasError){
+    if(hasError){
+        return {borderColor:'red'}
+    }
 }

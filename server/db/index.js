@@ -52,7 +52,7 @@ async function insertUsersData(tableName) {
     );
 
     await pool.query(`INSERT INTO ${tableName}(id, username, password, email, isActive, currentProperty, pois, requestedProperties) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`, [
-        '0',
+        'aaa',
         'fatih',
         encript(Buffer.from('fatih', 'binary').toString('base64')),
         'f.hyuseinov@gmail.com',
@@ -93,7 +93,7 @@ async function insertUsersData(tableName) {
 
 
     await pool.query(`INSERT INTO ${tableName}(id, username, password, email, isActive, currentProperty, pois, requestedProperties) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`, [
-        '1',
+        'bbb',
         'uner',
         encript(Buffer.from('uner', 'binary').toString('base64')),
         'uner@gmail.com',
@@ -134,16 +134,16 @@ async function insertMatchesData(tableName) {
     );
 
     await pool.query(`INSERT INTO ${tableName}(id, userids, configuration) VALUES($1, $2, $3)`, [
-        '0',
-        ['0', '1'],
+        'abc',
+        ['aaa', 'bbb'],
         [
             {
-                'from': '0',
-                'to': '1',
+                'from': 'aaa',
+                'to': 'bbb',
             },
             {
-                'from': '1',
-                'to': '0',
+                'from': 'bbb',
+                'to': 'aaa',
             },
         ]
     ]);

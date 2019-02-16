@@ -12,7 +12,7 @@ module.exports = {
 
         const myMatchesSqlResult = await db.query(`
             SELECT * FROM ${db.tableNames.matches}
-            WHERE $1 < userids
+            WHERE $1 <@ userids
         `, [`{${id}}`]);
 
         res.locals = {

@@ -1,10 +1,19 @@
 import { ajax, reducerUtils } from '../../../index';
+import { v4 } from 'node-uuid';
 
 export const REGISTER_USER = 'REGISTER_USER';
 
 export const registerUserAction = ({ username, password, email }) => {
     return (dispatch, getState) => {
-        return ajax.post({ url: 'auth/register', postData: { username, password: btoa(password), email } }).then(({ token }) => {
+        return ajax.post({
+            url: 'auth/register',
+            postData: {
+                id: v4(),
+                username,
+                password: btoa(password),
+                email
+            }
+        }).then(({ token }) => {
             localStorage.token = token;
 
             const parsedUser = JSON.parse(atob(localStorage.token.split('.')[1])).user;
