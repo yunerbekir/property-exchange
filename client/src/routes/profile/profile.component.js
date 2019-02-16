@@ -42,7 +42,7 @@ export class ProfileComponent extends React.Component {
             <React.Fragment>
                 <Card>
                 <div>
-                        {this.props.profile?<ProfileInfoComponent userProfile={this.props.profile}/>
+                        {this.props.profile?<ProfileInfoComponent profile={this.props.profile}/>
                                             : null}
                     </div>
                     <p>{this.props.profile && this.props.profile.username}</p>
