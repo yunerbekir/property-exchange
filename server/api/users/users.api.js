@@ -36,7 +36,7 @@ module.exports = {
     },
 
     updateUser: async (req, res, next) => {
-        const { id } = req.auth;
+        const { id } = req.auth.user;
         const { isactive, currentproperty } = req.body;
         const result = await db.query(`UPDATE ${db.tableNames.users} 
                                          SET isactive=$1,
@@ -50,11 +50,11 @@ module.exports = {
         next();
     },
     deleteUser: async (req, res, next) => {
-        const { id } = req.auth;
+        const { id } = req.auth.user;
         const result = await db.query(`DELETE FROM ${db.tableNames.users}
                                          WHERE id=$1`, [id]);
         res.locals.data = {
-            intersection: result
+            deleteResult: result
         };
         next();
     }

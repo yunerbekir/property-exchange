@@ -7,8 +7,6 @@ module.exports = (req, res, next) => {
         try {
             req.auth = jwt.verify(req.headers.authorization, process.env.login_key || 'shhhhh');
 
-            if (req.auth.role != 66) {
-            }
             next();
         } catch (err) {
             if (err.name === 'TokenExpiredError') {
