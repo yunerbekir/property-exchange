@@ -9,7 +9,6 @@ export class ProfileInfoComponent extends React.Component {
 
     
     render() {
-        console.log(this.props.profile)
         return (
             <React.Fragment>
                 <Card className={'profileGrid'}>
