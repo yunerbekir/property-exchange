@@ -3,7 +3,7 @@ import { logoutAction } from '../+store/reducers/auth/logout.reducer';
 import { store } from '../+store/store';
 
 function getAuthHeader() {
-    return localStorage.token ? `Bearer ${localStorage.token}` : null;
+    return localStorage.token ? localStorage.token : null;
 }
 
 function getAbsoluteUrl() {

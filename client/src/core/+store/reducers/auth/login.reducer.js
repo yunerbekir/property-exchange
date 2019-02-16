@@ -4,7 +4,7 @@ export const LOGIN = 'LOGIN';
 
 export const loginAction = ({ username, password }) => {
     return (dispatch, getState) => {
-        return ajax.post({ url: 'login', postData: { username, password: password } }).then(({ token }) => {
+        return ajax.post({ url: 'auth/login', postData: { username, password: btoa(password) } }).then(({ token }) => {
             localStorage.token = token;
 
             const parsedUser = JSON.parse(atob(token.split('.')[1]));

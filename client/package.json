@@ -1,6 +1,6 @@
 {
-  "name": "ITW-UI",
-  "description": "A platform for ITW devices data vizualization",
+  "name": "prop-exchange-ui",
+  "description": "prop-exchange-ui",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
