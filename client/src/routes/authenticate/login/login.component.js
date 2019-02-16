@@ -6,6 +6,7 @@ import '../authenticate.component.scss';
 import { Button, Form } from 'antd';
 import { LoaderComponent } from '../../../shared';
 import { AppLayoutModel } from '../../../shared/models/AppLayoutModel';
+import { registerUserAction } from '../../../core/+store/reducers/users/register-user.reducer';
 
 export class LoginComponent extends React.Component {
     constructor(props) {
@@ -79,7 +80,7 @@ export class LoginComponent extends React.Component {
 }
 
 LoginComponent.propTypes = {
-    addUserAction: PropTypes.func.isRequired,
+    registerUserAction: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     loginAction: PropTypes.func.isRequired,

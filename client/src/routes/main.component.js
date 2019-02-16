@@ -2,19 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
 import { NavbarComponent } from '../core';
-import { AppLayoutModel } from '../shared/models/AppLayoutModel';
 
 import './main.component.scss';
 import { AuthenticateContainer } from './authenticate/authenticate.container';
 import { DashboardContainer } from './dashboard/dashboard.container';
-import { DevicesContainer } from './settings/devices/devices.container';
-import { UsersContainer } from './settings/users/users.container';
-import { DefaultParamsContainer } from './settings/default-params/default-params.container';
 import deviceMarker from '../core/assets/map-markers/map-marker-solid.svg';
 
 import { Layout } from 'antd';
 import L from 'leaflet';
 import { LoaderComponent } from '../shared';
+import { ProfileContainer } from './profile/profile.container';
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -27,10 +24,6 @@ L.Icon.Default.mergeOptions({
 });
 
 export class MainComponent extends React.Component {
-    state = {
-        showLoader: true
-    };
-
     componentWillReceiveProps(nextProps) {
         // Fetch settings in the moment we are logging in
         if (!this.props.auth.token && nextProps.auth.token) {
@@ -40,7 +33,7 @@ export class MainComponent extends React.Component {
     render() {
         const isLogged = !!this.props.auth.token;
 
-        if ((this.props.history.location.pathname === '/authenticate' && this.props.history.location.search.indexOf('?user=') > -1) || !isLogged) {
+        if (!isLogged) {
             return (
                 <Layout>
                     <div>
@@ -57,26 +50,18 @@ export class MainComponent extends React.Component {
             );
         }
 
-        return <LoaderComponent visible={this.state.showLoader} isPageLoader={true} style={{ top: 0 }}>
+        return <LoaderComponent visible={false} isPageLoader={true} style={{ top: 0 }}>
             <Layout>
                 <NavbarComponent
-                    currentTheme={this.props.appLayout.getSelectedTheme()}
                     user={this.props.auth.user}
                     onLogout={this.props.logoutAction}
                     onChangePassword={this.props.changePasswordAction}
-                    version={this.props.version}
                 />
                 <Layout.Content style={{ padding: '0 50px', marginTop: 64 }}>
-                    <Route exact path='/' render={() => (<Redirect to='/travel-time'/>)}/>
-                    <Route exact path='/authenticate' render={() => (<Redirect to='/travel-time'/>)}/>
-                    <Route path={`/dashboard`} component={DashboardContainer}/>
-                    <Route path={`/settings/users`} render={() => this.props.auth.user.roles !== 'ROLE_ADMIN' ?
-                        <Redirect to='/travel-time'/> : <UsersContainer/>}/>
-                    <Route path={`/settings/devices`} render={() => this.props.auth.user.roles !== 'ROLE_ADMIN' ?
-                        <Redirect to='/travel-time'/> : <DevicesContainer/>}/>
-                    <Route path={`/settings/defaultParams`}
-                           render={() => this.props.auth.user.roles !== 'ROLE_ADMIN' ?
-                               <Redirect to='/travel-time'/> : <DefaultParamsContainer/>}/>
+                    <Route exact path='/' render={() => (<Redirect to='/dashboard'/>)}/>
+                    <Route exact path='/dashboard' component={DashboardContainer}/>
+                    <Route exact path='/authenticate' render={() => (<Redirect to='/dashboard'/>)}/>
+                    <Route path={`/profile`} component={ProfileContainer}/>
                 </Layout.Content>
             </Layout>
         </LoaderComponent>;
@@ -86,10 +71,6 @@ export class MainComponent extends React.Component {
 MainComponent.propTypes = {
     history: PropTypes.object.isRequired,
     auth: PropTypes.any.isRequired,
-    appLayout: PropTypes.instanceOf(AppLayoutModel).isRequired,
     changePasswordAction: PropTypes.func.isRequired,
     logoutAction: PropTypes.func.isRequired,
-    getAppLayoutSettingsAction: PropTypes.func.isRequired,
-    version: PropTypes.object.isRequired,
-    getApiVersionAction: PropTypes.func.isRequired,
 };

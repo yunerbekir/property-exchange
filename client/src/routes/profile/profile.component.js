@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppLayoutModel } from '../../shared/models/AppLayoutModel';
 import { Button } from 'antd/lib/radio';
 import {Card} from 'antd';
 
@@ -25,7 +24,7 @@ export class ProfileComponent extends React.Component {
         return (
             <React.Fragment>
                 <Card>
-                <p>{this.state.data.value}</p>
+                <p>{this.state.data.text}</p>
                 </Card>
             </React.Fragment>
 
@@ -35,6 +34,5 @@ export class ProfileComponent extends React.Component {
 
 ProfileComponent.propTypes = {
     history: PropTypes.object.isRequired,
-    appLayout: PropTypes.instanceOf(AppLayoutModel).isRequired,
 };
 

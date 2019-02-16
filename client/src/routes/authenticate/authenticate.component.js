@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppLayoutModel } from '../../shared/models/AppLayoutModel';
 import {LoginContainer} from './login/login.container'
 import {RegisterContainer} from './register/register.container'
 import {Tabs} from 'antd'
@@ -31,6 +30,5 @@ export class AuthenticateComponent extends React.Component {
 AuthenticateComponent.propTypes = {
     history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
-    appLayout: PropTypes.instanceOf(AppLayoutModel).isRequired,
 };
 

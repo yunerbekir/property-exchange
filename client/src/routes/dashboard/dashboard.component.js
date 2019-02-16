@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppLayoutModel } from '../../shared/models/AppLayoutModel';
-//import { Button } from 'antd/lib/radio';
-import {Card} from 'antd';
+import { Card } from 'antd';
 
 export class DashboardComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data:{
-                text:'mrrrr',
+            data: {
+                text: 'mrrrr',
             }
         };
     }
@@ -21,11 +19,11 @@ export class DashboardComponent extends React.Component {
     }
 
     render() {
-
+        console.log('aaaaaaa');
         return (
             <React.Fragment>
                 <Card>
-                <p>{this.state.data.value}</p>
+                    <p>{this.state.data.text}</p>
                 </Card>
             </React.Fragment>
 
@@ -35,6 +33,5 @@ export class DashboardComponent extends React.Component {
 
 DashboardComponent.propTypes = {
     history: PropTypes.object.isRequired,
-    appLayout: PropTypes.instanceOf(AppLayoutModel).isRequired,
 };
 
