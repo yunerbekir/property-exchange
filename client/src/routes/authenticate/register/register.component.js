@@ -70,7 +70,7 @@ export class RegisterComponent extends React.Component {
                                value={this.state.password}
                                onChange={this.handleUserInput}/>
                         <Button htmlType={'submit'}>
-                            <LoaderComponent visible={this.state.showLoader}>submit</LoaderComponent>
+                            <LoaderComponent visible={this.state.showLoader}>Register</LoaderComponent>
                         </Button>
                     </Form>
                 </div>

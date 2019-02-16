@@ -65,7 +65,7 @@ export class LoginComponent extends React.Component {
                                value={this.state.password}
                                onChange={this.handleUserInput}/>
                         <Button htmlType={'submit'}>
-                            <LoaderComponent visible={this.state.showLoader}>submit</LoaderComponent>
+                            <LoaderComponent visible={this.state.showLoader}>Log in</LoaderComponent>
                         </Button>
                     </Form>
                 </div>

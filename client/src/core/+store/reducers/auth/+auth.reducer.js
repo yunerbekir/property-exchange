@@ -12,7 +12,6 @@ export const actions = {
     logoutAction,
     changePasswordAction,
     registerUserAction,
-
 };
 
 const ACTION_HANDLERS = {};

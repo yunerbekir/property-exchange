@@ -3,15 +3,11 @@ import PropTypes from 'prop-types';
 import { AppLayoutModel } from '../../shared/models/AppLayoutModel';
 import {LoginContainer} from './login/login.container'
 import {RegisterContainer} from './register/register.container'
-import { Button } from 'antd/lib/radio';
+import {Tabs} from 'antd'
+
+const TabPane = Tabs.TabPane;
 
 export class AuthenticateComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLogin:true,
-        };
-    }
 
     componentDidMount() {
         // if (this.props.history.location.search.indexOf('?user=') > -1) {
@@ -20,19 +16,14 @@ export class AuthenticateComponent extends React.Component {
     }
 
     render() {
-        const btnText = this.state.isLogin?'Register':'Login';
 
         return (
             <React.Fragment>
-                {this.state.isLogin?<LoginContainer/>:<RegisterContainer/>}
-                <div>
-                    <Button className='changeFormButton' htmlType={'submit'} align={'center'} 
-                    onClick={() => this.setState({isLogin: !this.state.isLogin})}>
-                    {btnText}
-                    </Button>
-                </div>
+                <Tabs defaultActiveKey="1">
+                <TabPane tab="Login" key="1"><LoginContainer/></TabPane>
+                <TabPane tab="Register" key="2"><RegisterContainer/></TabPane>
+                </Tabs>
             </React.Fragment>
-
         );
     }
 }
