@@ -3,17 +3,17 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const authMiddleware = require('./verify-is-logged');
 
-const {encript} = require('./pass-encription.util');
+const { encript } = require('./pass-encription.util');
 
 const api = express.Router();
 
 api.post('/login', async (req, res, next) => {
-    const {username, password} = req.body;
+    const { username, password } = req.body;
 
     if (typeof username === 'undefined' || typeof password === 'undefined') {
-        next({statusCode: 400, message: 'Username and password can not be empty!'});
+        next({ statusCode: 400, message: 'Username and password can not be empty!' });
     } else {
-        const {rows} = await db.query(`
+        const { rows } = await db.query(`
             SELECT json_build_object('username', username)
                      FROM ${db.tableNames.users}
                      WHERE username=$1 AND password=$2
@@ -34,13 +34,58 @@ api.post('/login', async (req, res, next) => {
 
             next();
         } else {
-            next({statusCode: 400, message: 'Wrong username or password!'});
+            next({ statusCode: 400, message: 'Wrong username or password!' });
+        }
+    }
+});
+
+api.post('/register', async (req, res, next) => {
+    const { id, username, password, email } = req.body;
+
+
+    if (typeof id === 'undefined' || typeof email === 'undefined' || typeof username === 'undefined' || typeof password === 'undefined') {
+        next({ statusCode: 400, message: 'Username and password can not be empty!' });
+    } else {
+        const { rows } = await db.query(`
+            SELECT json_build_object('username', username)
+                     FROM ${db.tableNames.users}
+                     WHERE username=$1 OR email=$2
+        `, [username, email]);
+
+        if (rows[0] && rows[0].json_build_object) {
+            next({ statusCode: 400, message: 'Username or Email is already taken!' });
+
+        } else {
+            try {
+                await db.query(`INSERT INTO ${db.tableNames.users}(id, username, password, email, currentproperty) VALUES($1, $2, $3, $4, $5)`, [
+                    id,
+                    username,
+                    encript(password),
+                    email,
+                    {}
+                ]);
+
+                const user = { username };
+                res.locals = {
+                    data: {
+                        token: jwt.sign({
+                            user,
+                            role: 66
+                        }, process.env.login_key || 'shhhhh')
+                    },
+                    toastMessages: [],
+                    confirmMessage: '',
+                };
+                next();
+            } catch (e) {
+                next({ statusCode: 400, message: 'Could not register!' });
+            }
         }
     }
 });
 
 api.post('/change-password', authMiddleware, async (req, res, next) => {
-    const {oldPassword, newPassword} = req.body;
+    const { oldPassword, newPassword } = req.body;
 
     const result = await db.query(`UPDATE ${db.tableNames.users} 
                                          SET password=$1
@@ -56,7 +101,7 @@ api.post('/change-password', authMiddleware, async (req, res, next) => {
         };
         next();
     } else {
-        next({statusCode: 400, message: 'Could not change the password. Check if you typed correct the old one!'});
+        next({ statusCode: 400, message: 'Could not change the password. Check if you typed correct the old one!' });
     }
 });
 

@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
-    if (req.originalUrl === '/api/auth/login' || req.originalUrl === '/api/auth/logout') {
+    if (req.originalUrl === '/api/auth/login' || req.originalUrl === '/api/auth/register' || req.originalUrl === '/api/auth/logout') {
         next();
     } else {
         try {
@@ -12,9 +12,9 @@ module.exports = (req, res, next) => {
             next();
         } catch (err) {
             if (err.name === 'TokenExpiredError') {
-                next({statusCode: 401, message: 'Authentication is expired!'});
+                next({ statusCode: 401, message: 'Authentication is expired!' });
             } else {
-                next({statusCode: 401, message: 'Not authorised!'});
+                next({ statusCode: 401, message: 'Not authorised!' });
             }
         }
     }

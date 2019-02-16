@@ -44,6 +44,7 @@ app.use((req, res) => {
             message: `${req.uri} not found`
         });
         res.status(404).send({ error: 'Api Endpoint Not Found' });
+        return;
     }
 
     const response = {
