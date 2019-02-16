@@ -1,22 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'antd/lib/radio';
-import {Card} from 'antd';
+import { Card } from 'antd';
 
 export class ProfileComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data:{
-                text:'maciii <3'
-            }
-        };
     }
 
     componentDidMount() {
-        // if (this.props.history.location.search.indexOf('?user=') > -1) {
-        //     this.createUserAndLogin();
-        // }
+        this.props.getProfileAction();
     }
 
     render() {
@@ -24,7 +17,7 @@ export class ProfileComponent extends React.Component {
         return (
             <React.Fragment>
                 <Card>
-                <p>{this.state.data.text}</p>
+                    <p>{this.props.profile && this.props.profile.username}</p>
                 </Card>
             </React.Fragment>
 
@@ -34,5 +27,7 @@ export class ProfileComponent extends React.Component {
 
 ProfileComponent.propTypes = {
     history: PropTypes.object.isRequired,
+    profile: PropTypes.object.isRequired,
+    getProfileAction: PropTypes.func.isRequired,
 };
 

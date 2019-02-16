@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as toastrReducer } from 'react-redux-toastr';
 import { authReducer } from './auth/+auth.reducer';
 import { dashboardReducer } from './dashboard/dashboard.reducer';
+import { profileReducer } from './profile-reducer/profile.reducer';
 
 
 export const makeRootReducer = (asyncReducers) => {
@@ -9,6 +10,7 @@ export const makeRootReducer = (asyncReducers) => {
         toastr: toastrReducer,
         auth: authReducer,
         dashboard: dashboardReducer,
+        profile: profileReducer,
         ...asyncReducers
     });
 };
