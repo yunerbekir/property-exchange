@@ -14,8 +14,6 @@ const pool = new Pool({
 const schemaName = 'public';
 const tableNames = {
     users: schemaName + '.users',
-    requestedProperties: schemaName + '.requested_properties',
-    pois: schemaName + '.pois',
     matches: schemaName + '.matches',
 };
 
@@ -31,8 +29,6 @@ module.exports = {
             }
 
             await insertUsersData(tableNames.users);
-            await insertRequestedPropertiesData(tableNames.requestedProperties);
-            await insertPoisData(tableNames.pois);
             await insertMatchesData(tableNames.matches);
         }
         catch (e) {
@@ -48,12 +44,14 @@ async function insertUsersData(tableName) {
                      username varchar,
                      password varchar,
                      email varchar,
-                     isactive boolean,
-                     currentproperty jsonb
+                     isActive boolean,
+                     currentProperty jsonb,
+                     pois jsonb[],
+                     requestedProperties jsonb[]
                      )`
     );
 
-    await pool.query(`INSERT INTO ${tableName}(id, username, password, email, isactive, currentproperty) VALUES($1, $2, $3, $4, $5, $6)`, [
+    await pool.query(`INSERT INTO ${tableName}(id, username, password, email, isActive, currentProperty, pois, requestedProperties) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`, [
         '0',
         'fatih',
         encript(Buffer.from('fatih', 'binary').toString('base64')),
@@ -63,45 +61,58 @@ async function insertUsersData(tableName) {
             'address': 'Sofia bul. Bulgaria 56',
             'rent': 500,
             'size': 56,
-        }
+        },
+        [
+            {
+                'address': 'Sofia bul. Al. Malinov 11',
+                'rent': 300,
+                'size': 56,
+            },
+            {
+                'address': 'Sofia bul. G.M Dimitroff 21',
+                'rent': 400,
+                'size': 21,
+            },
+            {
+                'address': 'Sofia bul. Al. Malinov 11',
+                'rent': 300,
+                'size': 56,
+            }
+        ],
+        [
+            {
+                'location': 'Sofia bul. Al. Malinov 11',
+                'hourRange': '08-09'
+            },
+            {
+                'location': 'Sofia bul. Al. Malinov 11',
+                'hourRange': '18-19'
+            }
+        ],
     ]);
-}
 
-async function insertRequestedPropertiesData(tableName) {
-    await pool.query(
-        `CREATE TABLE IF NOT EXISTS ${tableName}(
-                     id varchar PRIMARY KEY,
-                     user_id varchar,
-                     specs jsonb
-                     )`
-    );
 
-    await pool.query(`INSERT INTO ${tableName}(id, user_id, specs) VALUES($1, $2, $3)`, [
-        '0',
-        '0',
+    await pool.query(`INSERT INTO ${tableName}(id, username, password, email, isActive, currentProperty, pois, requestedProperties) VALUES($1, $2, $3, $4, $5, $6, $7, $8)`, [
+        '1',
+        'uner',
+        encript(Buffer.from('fatih', 'binary').toString('base64')),
+        'uner@gmail.com',
+        true,
         {
-            'address': 'Sofia bul. Al. Malinov 11',
-            'rent': 300,
-            'size': 56,
-        }
-    ]);
-}
+            'address': 'Sofia st. town',
+            'rent': 100,
+            'size': 30,
+        },
+        [
+            {
+                'address': 'Sofia 11',
+                'rent': 100,
+                'size': 22,
+            }
+        ],
+        [
 
-async function insertPoisData(tableName) {
-    await pool.query(
-        `CREATE TABLE IF NOT EXISTS ${tableName}(
-                     id varchar PRIMARY KEY,
-                     user_id varchar,
-                     location varchar,
-                     hourrange varchar
-                     )`
-    );
-
-    await pool.query(`INSERT INTO ${tableName}(id, user_id, location, hourrange) VALUES($1, $2, $3, $4)`, [
-        '0',
-        '0',
-        'Sofia bul. Al. Malinov 11',
-        '08-09'
+        ],
     ]);
 }
 
