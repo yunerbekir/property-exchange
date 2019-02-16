@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, List, Modal } from 'antd';
-import './my-requested-properties.component.scss';
+import './my-requested-properties-modal.component.scss';
 
 export class MyRequestedPropertiesModalComponent extends React.Component {
     state = {
@@ -75,7 +75,7 @@ export class MyRequestedPropertiesModalComponent extends React.Component {
             >
                 <Form layout='inline'>
                     {this.state.requestedproperties.map((propToEdit, idx) => {
-                        return <div style={{ marginBottom: '15px', }} key={idx}>
+                        return <div className={'my-requested-prop-form-group'} key={idx}>
                             <Form.Item label={'Region'}>
                                 <Input type={'text'} value={propToEdit.address}
                                        onChange={(e) => this.updateAddress(idx, e)}/>
