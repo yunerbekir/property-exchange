@@ -57,8 +57,6 @@ export class NavbarComponent extends React.Component {
 
                 <Menu.SubMenu style={{ float: 'right' }}
                               title={<span><Icon type='user'/>{user.username || 'username'}</span>}>
-                    <Menu.Item key='setting:1' onClick={this.onShowModal}><FontAwesomeIcon icon='key'/> Change Password
-                    </Menu.Item>
                     <Menu.Item onClick={onLogout} key='setting:3'><FontAwesomeIcon icon='lock'/> Logout</Menu.Item>
                 </Menu.SubMenu>
             </Menu>
