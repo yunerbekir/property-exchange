@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Modal } from 'antd';
 import './my-requested-properties-modal.component.scss';
+import './profileInfoModal.component.scss';
 
 export class ProfileInfoModalComponent extends React.Component {
     state = {
