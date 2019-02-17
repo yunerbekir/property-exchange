@@ -35,7 +35,7 @@ export class ProfileInfoModalComponent extends React.Component {
         const newAddress = e.target.value;
         this.setState((prevState) => ({
             currentproperty: {
-                ...prevState.currentproperty ,
+                ...prevState.currentproperty,
                 address: newAddress,
             }
         }));
@@ -45,8 +45,8 @@ export class ProfileInfoModalComponent extends React.Component {
         const newRent = e.target.value;
         this.setState((prevState) => ({
             currentproperty: {
-                ...prevState.currentproperty ,
-                rent: +newRent,
+                ...prevState.currentproperty,
+                rent: newRent,
             }
         }));
     };
@@ -55,8 +55,8 @@ export class ProfileInfoModalComponent extends React.Component {
         const newSize = e.target.value;
         this.setState((prevState) => ({
             currentproperty: {
-                ...prevState.currentproperty ,
-                size: +newSize,
+                ...prevState.currentproperty,
+                size: newSize,
             }
         }));
     };
@@ -65,24 +65,24 @@ export class ProfileInfoModalComponent extends React.Component {
 
 
         return (
-            <Modal
+            <Modal className={'profile-info-modal'}
                 title='Update My Requested Properties'
                 visible={this.state.visible}
                 onOk={this.handleOk}
                 onCancel={this.handleCancel}
             >
-                <Form layout='inline'>
-                    <Form.Item label={'Address'}>
+                <Form layout='inline' className={'profile-info-form'}>
+'                  <Form.Item className={'profile-info-form-item'} label={'Address'}>
                         <Input type={'text'} value={this.state.currentproperty.address}
-                                onChange={this.updateAddress}/>
+                            onChange={this.updateAddress} />
                     </Form.Item>
-                    <Form.Item label={'Rent'}>
+                    <Form.Item className={'profile-info-form-item'} label={'Rent'}>
                         <Input type={'number'} value={this.state.currentproperty.rent}
-                                onChange={this.updateRent}/>
+                            onChange={this.updateRent} />
                     </Form.Item>
-                    <Form.Item label={'Size'}>
+                    <Form.Item className={'profile-info-form-item'} label={'Size'}>
                         <Input type={'number'} value={this.state.currentproperty.size}
-                                onChange={this.updateSize}/>
+                            onChange={this.updateSize} />
                     </Form.Item>
                 </Form>
             </Modal>
