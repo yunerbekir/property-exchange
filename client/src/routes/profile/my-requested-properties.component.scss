@@ -13,3 +13,17 @@
         padding-left: 0px;
     }
 }
+
+@media screen and (max-width:600px){
+    .prop-card-container .ant-card-body {
+        flex-direction: column;
+        align-content: center;
+    
+    }
+    .prop-card{
+        max-width: 250px; 
+        border: none;
+        padding-top: 30px;
+        border-bottom: 1px solid grey;
+    }
+}

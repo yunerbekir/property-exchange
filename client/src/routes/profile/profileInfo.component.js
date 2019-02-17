@@ -59,9 +59,9 @@ export class ProfileInfoComponent extends React.Component {
                                     </tr>
                                 </tbody>
                             </table>: null}
-                            <Button className={'modal-button'} onClick={this.openModal}>Edit</Button>
+                              <Button className={'modal-button'} onClick={this.openModal}>Edit</Button>
                         </Col>
-                        <Col span={6}>
+                        <Col className={'image-set-container'}span={6}>
                             <ImageSetComponent imageSet={[flat1,flat2,flat3]}/>
                         </Col>
                     </Row>
