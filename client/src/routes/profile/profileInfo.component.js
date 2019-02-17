@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import { Card, Avatar, Switch, Row, Col, Button } from 'antd';
 import './profileInfo.component.scss';
 import {ProfileInfoModalComponent} from './profileInfoModal.component';
+import {ImageSetComponent} from './imageSetComponent';
+
 import DefaultAvatarIcon from '../../core/assets/images/defaultAvatarIcon.png'
+import flat1 from '../../core/assets/images/flat1.jpg';
+import flat2 from '../../core/assets/images/flat2.jpg';
+import flat3 from '../../core/assets/images/flat3.jpg';
 
 
 export class ProfileInfoComponent extends React.Component {
@@ -55,6 +60,9 @@ export class ProfileInfoComponent extends React.Component {
                                 </tbody>
                             </table>: null}
                             <Button className={'modal-button'} onClick={this.openModal}>Edit</Button>
+                        </Col>
+                        <Col span={6}>
+                            <ImageSetComponent imageSet={[flat1,flat2,flat3]}/>
                         </Col>
                     </Row>
                     

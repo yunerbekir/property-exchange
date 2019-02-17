@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card } from 'antd';
-import { MyPropertyComponent } from './my-property.component';
 import { MyPoisComponent } from './my-pois.component';
 import { MyRequestedPropertiesComponent } from './my-requested-properties.component';
 import { ProfileInfoComponent } from './profileInfo.component';
+
+
+
 
 export class ProfileComponent extends React.Component {
     constructor(props) {
@@ -63,6 +65,9 @@ export class ProfileComponent extends React.Component {
                                                                     getProfileAction={this.props.getProfileAction}/>
                             : null}
                     </div>
+
+                    
+
                     <div hidden={true}>
                         {this.props.profile && this.props.profile.pois ?
                             <MyPoisComponent pois={this.props.profile.pois} onPoisUpdated={this.onPoisUpdate}/>
