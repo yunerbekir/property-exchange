@@ -37,13 +37,14 @@ export class NavbarComponent extends React.Component {
         const isThemeDay = true;
         const navLogoSrc = isThemeDay ? LogoColored : LogoColored;
 
-        return (<Layout.Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+        return (<Layout.Header className={'nav-bar'} style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
             <div className='logo'>
                 <Link to='/'>
                     <img className='nav-logo' alt='ITW Logo' src={navLogoSrc}/>
                 </Link>
             </div>
             <Menu
+                className={'menu-bar'}
                 mode='horizontal'
                 defaultSelectedKeys={[defaultSelectedKey]}
                 style={{ lineHeight: '64px' }}>

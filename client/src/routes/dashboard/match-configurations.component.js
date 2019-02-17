@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Icon } from 'antd';
+import { Card, Icon, Divider  } from 'antd';
 import './match-configurations.component.scss';
 import flat1 from '../../core/assets/images/flat1.jpg';
 import flat2 from '../../core/assets/images/flat2.jpg';
@@ -44,11 +44,14 @@ export class MatchConfigurationsComponent extends React.Component {
                             </div>
                             <div className={'body'}>
                                 {myMatch.configuration.map((matchElement, configIdx) => {
-                                    return <div className={'match-config-item'} key={configIdx}>
-                                        {this.renderConfigItemCard(matchElement.from, myMatch.userids)}
-                                        <Icon type='double-right'/>
-                                        {this.renderConfigItemCard(matchElement.to, myMatch.userids)}
-                                    </div>;
+                                    return <React.Fragment>
+                                        <div className={'match-config-item'} key={configIdx}>
+                                            {this.renderConfigItemCard(matchElement.from, myMatch.userids)}
+                                            <Icon className={'arrow-icon'}type='double-right'/>
+                                            {this.renderConfigItemCard(matchElement.to, myMatch.userids)}
+                                        </div>
+                                        <Divider></Divider>
+                                    </React.Fragment>
                                 })}
                             </div>
                         </div>;

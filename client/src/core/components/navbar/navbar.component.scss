@@ -8,3 +8,12 @@
         width: 60px;
     }
 }
+
+@media screen and (max-width:600px){
+    .logo{
+        margin-right: 35px;
+    }
+    .nav-bar{
+        padding: 0px 0px 0px 0px;
+    }       
+}

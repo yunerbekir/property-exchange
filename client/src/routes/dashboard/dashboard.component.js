@@ -24,7 +24,6 @@ export class DashboardComponent extends React.Component {
                                                                                          className='nav-text'>Profile</Link>.
                     </p>
                 </Card>
-
                 <MatchConfigurationsComponent dashboard={this.props.dashboard}/>
             </React.Fragment>
 

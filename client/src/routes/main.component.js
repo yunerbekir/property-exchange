@@ -41,6 +41,7 @@ export class MainComponent extends React.Component {
         return <LoaderComponent visible={false} isPageLoader={true} style={{ top: 0 }}>
             <Layout>
                 <NavbarComponent
+                    className={'nav-bar'}
                     user={this.props.auth.user}
                     onLogout={this.props.logoutAction}
                     onChangePassword={this.props.changePasswordAction}
