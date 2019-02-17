@@ -11,9 +11,13 @@
 
 @media screen and (max-width:600px){
     .logo{
-        margin-right: 35px;
+        margin-right: 10px;
     }
     .nav-bar{
         padding: 0px 0px 0px 0px;
+        display: flex;
+        justify-content: space-evenly;
+        
     }       
+    
 }
