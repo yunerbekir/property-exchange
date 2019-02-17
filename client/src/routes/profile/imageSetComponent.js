@@ -23,5 +23,5 @@ export class ImageSetComponent extends React.Component {
 
 
 ImageSetComponent.propTypes = {
-    imageSet: PropTypes.object.isRequired
+    imageSet: PropTypes.array.isRequired
 };
