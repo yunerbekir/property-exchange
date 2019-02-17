@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, Avatar, Switch, Row, Col, Button } from 'antd';
 import './profileInfo.component.scss';
-import tempProfile from '../../core/assets/images/tempProfile.png';
 import {ProfileInfoModalComponent} from './profileInfoModal.component';
+import DefaultAvatarIcon from '../../core/assets/images/defaultAvatarIcon.png'
 
 
 export class ProfileInfoComponent extends React.Component {
@@ -28,7 +28,7 @@ export class ProfileInfoComponent extends React.Component {
                 <Card className={'profile-grid'}>
                     <Row gutter={48}>
                         {this.props.profile?<Col className={'avatar-grid'} span={5}>
-                            <Avatar className='avatar' src={tempProfile}/>
+                            <Avatar className='avatar' src={DefaultAvatarIcon}/>
                             <p>{this.props.profile.username}</p>
                             <p>{this.props.profile.email}</p>
                         </Col>:null}
