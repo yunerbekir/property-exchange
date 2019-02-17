@@ -10,8 +10,8 @@ const mapDispatchToProps = {
     changePasswordAction,
 };
 
-const mapStateToProps = ({ auth, appLayout, version }) => {
-    return ({ auth, appLayout, version });
+const mapStateToProps = ({ auth }) => {
+    return ({ auth });
 };
 
 export const MainContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(MainComponent));

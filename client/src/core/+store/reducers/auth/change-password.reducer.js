@@ -5,7 +5,7 @@ export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const changePasswordAction = ({ oldPassword, newPassword }) => {
     return (dispatch, getState) => {
         return ajax.post({
-            url: 'users/changePassword',
+            url: 'auth/changePassword',
             postData: { oldPassword: oldPassword, newPassword: newPassword }
         })
             .then(() => {

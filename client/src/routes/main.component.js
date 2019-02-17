@@ -6,22 +6,10 @@ import { NavbarComponent } from '../core';
 import './main.component.scss';
 import { AuthenticateContainer } from './authenticate/authenticate.container';
 import { DashboardContainer } from './dashboard/dashboard.container';
-import deviceMarker from '../core/assets/map-markers/map-marker-solid.svg';
 
 import { Layout } from 'antd';
-import L from 'leaflet';
 import { LoaderComponent } from '../shared';
 import { ProfileContainer } from './profile/profile.container';
-
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-    iconRetinaUrl: deviceMarker,
-    iconUrl: deviceMarker,
-    shadowUrl: null,
-    iconAnchor: [12, 12],
-    iconSize: [24, 24],
-});
 
 export class MainComponent extends React.Component {
     componentWillReceiveProps(nextProps) {

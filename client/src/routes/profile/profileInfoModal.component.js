@@ -46,7 +46,7 @@ export class ProfileInfoModalComponent extends React.Component {
         this.setState((prevState) => ({
             currentproperty: {
                 ...prevState.currentproperty ,
-                rent: newRent,
+                rent: +newRent,
             }
         }));
     };
@@ -56,7 +56,7 @@ export class ProfileInfoModalComponent extends React.Component {
         this.setState((prevState) => ({
             currentproperty: {
                 ...prevState.currentproperty ,
-                size: newSize,
+                size: +newSize,
             }
         }));
     };
