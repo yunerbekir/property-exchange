@@ -23,7 +23,6 @@ export class ProfileInfoComponent extends React.Component {
     }
 
     render() {
-
         return (
             <React.Fragment>
                 <Card className={'profile-grid'}>

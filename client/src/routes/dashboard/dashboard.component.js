@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Card } from 'antd';
 import { MatchConfigurationsComponent } from './match-configurations.component';
 import { Link } from 'react-router-dom';
+import './dashboard.component.scss';
 
 export class DashboardComponent extends React.Component {
     componentDidMount() {

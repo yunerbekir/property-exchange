@@ -73,9 +73,9 @@ api.post('/register', async (req, res, next) => {
                     email,
                     true,
                     {
-                        'address': null,
-                        'rent': null,
-                        'size': null,
+                        'address': '',
+                        'rent': 0,
+                        'size': 0,
                     },
                     [],
                     [
@@ -97,7 +97,7 @@ api.post('/register', async (req, res, next) => {
                     ],
                 ]);
 
-                const user = { username };
+                const user = { id, username, email };
                 res.locals = {
                     data: {
                         token: jwt.sign({

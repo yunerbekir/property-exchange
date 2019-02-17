@@ -7,6 +7,10 @@ import req1 from '../../core/assets/images/req-1.png';
 import req2 from '../../core/assets/images/req-2.png';
 import req3 from '../../core/assets/images/req-3.png';
 import reqEmpty from '../../core/assets/images/req-empty.jpg';
+import star1 from '../../core/assets/images/first.jpg';
+import star2 from '../../core/assets/images/second.jpg';
+import star3 from '../../core/assets/images/thirt.jpg';
+const starArr =[star1, star2, star3];
 
 const mapImages = [req1, req2, req3];
 
@@ -44,7 +48,7 @@ export class MyRequestedPropertiesComponent extends React.Component {
                                                      src={property.address ? mapImages[idx] : reqEmpty}/>}
                             >
                                 <Card.Meta
-                                    avatar={<div>{idx + 1}</div>}
+                                    avatar={<div><img src={starArr[idx]} alt="star" width="40px"/></div>}
                                     title={property.address || 'Not Added Yet!'}
                                     description={property.address ? <div>
                                         <div><b>{property.rent}</b> maximum rent price</div>

@@ -9,6 +9,7 @@ const db = require('./db/index');
 const logger = require('./logger');
 const authMiddleware = require('./auth/verify-is-logged');
 const fileUpload = require('express-fileupload');
+const matchUsers = require('./match-users');
 
 process.env.NODE_ENV === 'production' ?
     console.log('Running on PRODUCTION mode') :
@@ -45,6 +46,10 @@ app.use((req, res) => {
         });
         res.status(404).send({ error: 'Api Endpoint Not Found' });
         return;
+    }
+
+    if (req.originalUrl.indexOf('users') > -1) {
+        matchUsers();
     }
 
     const response = {
