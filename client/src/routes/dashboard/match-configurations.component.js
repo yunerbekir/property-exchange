@@ -38,9 +38,9 @@ export class MatchConfigurationsComponent extends React.Component {
                     {this.props.dashboard && this.props.dashboard.myMatches && this.props.dashboard.myMatches.length > 0 ? this.props.dashboard.myMatches.map((myMatch, idx) => {
                         return <div className={'match-item'} key={idx}>
                             <div className={'header'}>
-                                <span style={{ marginRight: '100px', fontSize: '16px' }}>Configuration {idx + 1}</span>
-                                <Button type='primary' icon='check'>Accept</Button>
-                                <Button type='danger' icon='close'>Decline</Button>
+                                <span style={{ marginRight: '0px', fontSize: '18px' }}>Configuration {idx + 1}</span>
+                                {/*<Button type='primary' icon='check'>Accept</Button>*/}
+                                {/*<Button type='danger' icon='close'>Decline</Button>*/}
                             </div>
                             <div className={'body'}>
                                 {myMatch.configuration.map((matchElement, configIdx) => {
