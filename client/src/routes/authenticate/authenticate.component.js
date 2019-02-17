@@ -5,6 +5,7 @@ import { RegisterContainer } from './register/register.container';
 import { Tabs } from 'antd';
 import './authenticate.component.scss';
 
+
 const TabPane = Tabs.TabPane;
 
 export class AuthenticateComponent extends React.Component {

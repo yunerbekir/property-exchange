@@ -11,6 +11,8 @@ import { Layout } from 'antd';
 import { LoaderComponent } from '../shared';
 import { ProfileContainer } from './profile/profile.container';
 
+import PropExchLogo from '../core/assets/images/PropExchLogo.png'
+
 export class MainComponent extends React.Component {
     componentWillReceiveProps(nextProps) {
         // Fetch settings in the moment we are logging in
@@ -25,6 +27,7 @@ export class MainComponent extends React.Component {
             return (
                 <Layout>
                     <div>
+                <img className={'app-logo'}src={PropExchLogo} alt={'appLogo'}/>
                         <Route path='/' render={({ location }) => {
                             if (location.pathname !== '/authenticate') {
                                 return <Redirect to='/authenticate'/>;
@@ -39,6 +42,7 @@ export class MainComponent extends React.Component {
         }
 
         return <LoaderComponent visible={false} isPageLoader={true} style={{ top: 0 }}>
+            
             <Layout>
                 <NavbarComponent
                     className={'nav-bar'}
