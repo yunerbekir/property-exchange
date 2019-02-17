@@ -13,7 +13,7 @@ export class ProfileComponent extends React.Component {
         this.onMyPropertyUpdate = this.onMyPropertyUpdate.bind(this);
         this.onPoisUpdate = this.onPoisUpdate.bind(this);
         this.onRequestedPropertiesUpdate = this.onRequestedPropertiesUpdate.bind(this);
-        this.updateActiveStatus=this.updateActiveStatus.bind(this);
+        this.updateActiveStatus = this.updateActiveStatus.bind(this);
     };
 
     onMyPropertyUpdate(newProperty) {
@@ -28,11 +28,11 @@ export class ProfileComponent extends React.Component {
         });
     }
 
-    onCurrentPropertyUpdate=(currentproperty)=>{
+    onCurrentPropertyUpdate = (currentproperty) => {
         return this.props.updateProfileAction({ ...this.props.profile, currentproperty }).then(() => {
-           return this.props.getProfileAction();
+            return this.props.getProfileAction();
         });
-    }
+    };
 
     onRequestedPropertiesUpdate(newProperties) {
 
@@ -40,9 +40,10 @@ export class ProfileComponent extends React.Component {
             return this.props.getProfileAction();
         });
     }
+
     updateActiveStatus(newStatus) {
 
-        return this.props.updateProfileAction({...this.props.profile,...newStatus}).then(() => {
+        return this.props.updateProfileAction({ ...this.props.profile, ...newStatus }).then(() => {
             return this.props.getProfileAction();
         });
     }
@@ -55,20 +56,13 @@ export class ProfileComponent extends React.Component {
         return (
             <React.Fragment>
                 <Card>
-                <div>
-                        {this.props.profile?<ProfileInfoComponent profile={this.props.profile}
-                                                                  onCurrentPropertyUpdated={this.onCurrentPropertyUpdate}
-                                                                  updateActiveStatus={this.updateActiveStatus}
-                                                                  getProfileAction={this.props.getProfileAction}/>
-                                            : null}
-                    </div>
                     <div>
-                        {this.props.profile && this.props.profile.currentproperty ?
-                            <MyPropertyComponent currentproperty={this.props.profile.currentproperty}
-                                                 onPropertyUpdate={this.onMyPropertyUpdate}/>
+                        {this.props.profile ? <ProfileInfoComponent profile={this.props.profile}
+                                                                    onCurrentPropertyUpdated={this.onCurrentPropertyUpdate}
+                                                                    updateActiveStatus={this.updateActiveStatus}
+                                                                    getProfileAction={this.props.getProfileAction}/>
                             : null}
                     </div>
-
                     <div hidden={true}>
                         {this.props.profile && this.props.profile.pois ?
                             <MyPoisComponent pois={this.props.profile.pois} onPoisUpdated={this.onPoisUpdate}/>
