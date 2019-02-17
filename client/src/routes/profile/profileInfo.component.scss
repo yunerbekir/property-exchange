@@ -2,7 +2,30 @@
     width: 150px;
     height: 150px;
     border: 1px solid black;
+    margin-bottom: 15px;
 }
-.profileGrid{
+.profile-grid{
+    .ant-card-body{
+        padding-bottom: 10px !important; 
+    }
     display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    .avatar-grid{
+        min-width: 160px;
+        max-width: 180px;
+        border-right: 1px solid black;
+    }
+    .user-meta{
+        table{
+            td{
+                width: 130px;
+                height: 2.5em;
+                align-content: left;
+            }
+        }
+        .modal-button{
+            width: 100px;
+        }
+    }
 }

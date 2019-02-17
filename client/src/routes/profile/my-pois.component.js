@@ -24,7 +24,7 @@ export class MyPoisComponent extends React.Component {
             };
         })
 
-        console.log(this.state.pois[index]);
+
 
     }
     handleButtonClick(){

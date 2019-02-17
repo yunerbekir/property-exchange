@@ -10,7 +10,7 @@ const mapDispatchToProps = {
     getProfileAction,
     updateProfileAction,
     updateProfilePoisAction,
-    updateProfileRequestedPropertiesAction
+    updateProfileRequestedPropertiesAction,
 };
 
 const mapStateToProps = ({ profile }) => ({ profile });
